@@ -7,11 +7,12 @@ import MainPage from './components/MainPage/MainPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import SignUp from './components/MainPage/SignUp';
 
+
+
 function App() {
   return (
     <>
       <Header />
-
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
