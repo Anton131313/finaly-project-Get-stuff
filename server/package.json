@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "sequelize": "^6.18.0",
     "sequelize-cli": "^6.4.1",
     "session-file-store": "^1.5.0",
+    "sha256": "^0.2.0",
     "ws": "^8.5.0"
   },
   "devDependencies": {
