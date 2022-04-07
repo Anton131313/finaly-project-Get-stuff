@@ -9,7 +9,7 @@ function MainPage() {
         <Banner />
       </center>
     </div>
-  )
+  );
 }
 
 export default MainPage;
