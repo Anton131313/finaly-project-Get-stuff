@@ -5,9 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFEEDB;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+nav {
+  padding: 0 1rem;
+}
+.content {
+  background-color: #FFEEDB;
+  min-height: calc(100vh - 70px - 63px);
+  padding: 1.5rem 0;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+}
+.user-content {
+  flex-grow: 1;
 }
