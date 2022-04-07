@@ -27,3 +27,7 @@ nav {
 .user-content {
   flex-grow: 1;
 }
+.profile {
+  background-color: #FFEEDB;
+  padding: 1.5rem 0;
+}
