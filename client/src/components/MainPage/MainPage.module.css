@@ -1,0 +1,12 @@
+.banner {
+  width: 700px;
+  height: 200px;
+  background-color: rgba(255, 216, 204);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.bannerCont {
+  display: flex;
+  justify-content: center;
+}
