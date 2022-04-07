@@ -1,16 +1,15 @@
-import Banner from "./Banner";
-import style from './MainPage.module.css'
+import React from 'react';
+import Banner from './Banner';
+import style from './MainPage.module.css';
 
-const MainPage = () => {
+function MainPage() {
   return (
-  <>
-  <div className="content">
-  <center>
-  <Banner />
-  </center>
-  </div>
-
-  </>);
+    <div className={style.content}>
+      <center>
+        <Banner />
+      </center>
+    </div>
+  )
 }
 
 export default MainPage;
