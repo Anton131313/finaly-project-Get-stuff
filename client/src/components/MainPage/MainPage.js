@@ -2,6 +2,7 @@ const MainPage = () => {
   return (
   <>
   <div className="content">
+    
 
   </div>
 
