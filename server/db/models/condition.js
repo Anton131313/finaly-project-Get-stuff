@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Condition.init(
     {
-      name: DataTypes.STRING,
+      nameCondition: DataTypes.STRING,
     },
     {
       sequelize,

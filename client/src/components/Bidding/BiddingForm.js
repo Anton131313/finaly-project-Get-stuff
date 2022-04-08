@@ -4,7 +4,7 @@ import styles from './bidding.module.css';
 function BiddingForm() {
   return (
     <div className="content">
-      
+
     </div>
   );
 }
