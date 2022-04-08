@@ -1,13 +1,19 @@
-const Footer = () => {
+import React from 'react';
+
+function Footer() {
   return (
     <footer className="page-footer cyan darken-2">
-    <div className="footer-copyright">
-      <div className="container">
-      © {new Date().getFullYear()} Copyright Text
-      <p className="right">Служба поддержки: support@getkhlam.ru</p>
+      <div className="footer-copyright">
+        <div className="container">
+          ©
+          {' '}
+          {new Date().getFullYear()}
+          {' '}
+          Copyright Text
+          <p className="right">Служба поддержки: support@getkhlam.ru</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   );
 }
 
