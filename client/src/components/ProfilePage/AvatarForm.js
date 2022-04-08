@@ -2,30 +2,27 @@ import React from 'react';
 
 function AvatarForm() {
   return (
-    <div className="row profile">
-      <center>
-        <div className="col s10 m5">
-          <div className="card">
-            <div className="card-image">
-              <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="аватар" />
-            </div>
-            <div className="card-content">
-              <p>Добавить аватарку</p>
-              <form action="#">
-                <div className="file-field input-field">
-                  <div className="btn">
-                    <span>File</span>
-                    <input type="file" />
-                  </div>
-                  <div className="file-path-wrapper">
-                    <input className="file-path validate" type="text" />
+    <div className="container">
+      <div className="main-body">
+        <div className="row gutters-sm">
+          <div className="col-md-4 mb-3">
+            <div className="card">
+              <div className="card-body">
+                <div className="d-flex flex-column align-items-center text-center">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
+                  <div className="mt-3">
+                    <h4>John Doe</h4>
+                    <p className="text-secondary mb-1">Full Stack Developer</p>
+                    <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                    <button className="btn btn-primary">Follow</button>
+                    <button className="btn btn-outline-primary">Message</button>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
-      </center>
+      </div>
     </div>
 
   );
