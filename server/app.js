@@ -34,7 +34,7 @@ app.use(
   }),
 );
 
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
   console.log('Сервер запущен, порт:', PORT);
