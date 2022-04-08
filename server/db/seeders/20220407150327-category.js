@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -12,95 +10,95 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "Categories",
+      'Categories',
       [
         {
-          name: "Телефоны и аксессуары",
+          nameCategory: 'Телефоны и аксессуары',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Компьютеры и оргтехника",
+          nameCategory: 'Компьютеры и оргтехника',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Электроника",
+          nameCategory: 'Электроника',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Бытовая техника",
+          nameCategory: 'Бытовая техника',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Всё для детей",
+          nameCategory: 'Всё для детей',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Украшения и часы",
+          nameCategory: 'Украшения и часы',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Сумки и обувь",
+          nameCategory: 'Сумки и обувь',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Зоотовары",
+          nameCategory: 'Зоотовары',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Дом и сад",
+          nameCategory: 'Дом и сад',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Автотовары",
+          nameCategory: 'Автотовары',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Красота и здоровье",
+          nameCategory: 'Красота и здоровье',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Спорт и развлечения",
+          nameCategory: 'Спорт и развлечения',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Одежда для женщин",
+          nameCategory: 'Одежда для женщин',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Одежда для мужчин",
+          nameCategory: 'Одежда для мужчин',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Канцтовары",
+          nameCategory: 'Канцтовары',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Инструменты",
+          nameCategory: 'Инструменты',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Мебель",
+          nameCategory: 'Мебель',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
-      {}
+      {},
     );
   },
 

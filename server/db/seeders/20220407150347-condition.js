@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -11,45 +9,45 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     await queryInterface.bulkInsert(
-      "Conditions",
+    await queryInterface.bulkInsert(
+      'Conditions',
       [
         {
-          name: "5",
+          nameCondition: 'ИДЕАЛЬНОЕ',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "4",
+          nameCondition: 'УДОВЛЕТВОРИ́ТЕЛЬНОЕ',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "3",
+          nameCondition: 'СРЕДНЕЕ',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "2",
+          nameCondition: 'ТРЕБУЕТ РЕМОНТА',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "1",
+          nameCondition: 'НЕ ГОДИТСЯ ДЛЯ ИСПОЛЬЗОВАНИЯ',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
-      {}
+      {},
     );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };

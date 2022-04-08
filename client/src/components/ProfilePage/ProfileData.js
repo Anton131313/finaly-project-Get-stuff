@@ -1,6 +1,7 @@
-const ProfileData = () => {
+import React from 'react';
+
+function ProfileData() {
   return (
-    <>
     <div>
       <span>Ваши персональные данные</span>
       <ul>
@@ -9,8 +10,6 @@ const ProfileData = () => {
         <li>Телефон: +79241234567</li>
       </ul>
     </div>
-
-    </>
   );
 }
 
