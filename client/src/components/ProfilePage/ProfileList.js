@@ -6,11 +6,11 @@ function ProfileList() {
     <div className="container">
       <div className={style.profileList}>
         <center>
-          <ul>
+          {/* <ul>
             <li>Подать объявление</li>
             <li>Мои объявления</li>
             <li>Избранное</li>
-          </ul>
+          </ul> */}
         </center>
       </div>
     </div>

@@ -11,12 +11,12 @@ function ProfilePage() {
       </center>
       <div className="col s7 push-s5">
         {' '}
-        <ProfileList />
+        <AvatarForm />
         <span className="flow-text" />
       </div>
       <div className="col s5 pull-s7">
         {' '}
-        <AvatarForm />
+        <ProfileList />
         {' '}
         <ProfileData />
         {' '}
