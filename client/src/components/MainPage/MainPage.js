@@ -3,7 +3,6 @@ import Banner from './Banner';
 
 function MainPage() {
   return (
-
     <div className="content">
       <center>
         <Banner />
