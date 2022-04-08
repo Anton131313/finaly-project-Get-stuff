@@ -1,6 +1,6 @@
 .banner {
-  width: 700px;
-  height: 200px;
+  width: 800px;
+  height: 150px;
   background-color: rgba(255, 216, 204);
   display: flex;
   justify-content: center;
@@ -10,3 +10,5 @@
   display: flex;
   justify-content: center;
 }
+
+
