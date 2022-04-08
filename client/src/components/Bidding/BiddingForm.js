@@ -24,7 +24,7 @@ function BiddingForm() {
               <option value="2">удовлетворительное</option>
               <option value="3">Среднее</option>
               <option value="2">На грани поломки</option>
-              <option value="3"></option>
+              <option value="3"> uygiuyg </option>
             </select>
             <label>Состояние товара</label>
           </div>
