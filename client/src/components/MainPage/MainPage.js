@@ -4,12 +4,15 @@ import style from './MainPage.module.css';
 
 function MainPage() {
   return (
+
+  <>
     <div className={style.content}>
       <center>
         <Banner />
       </center>
     </div>
   );
+
 }
 
 export default MainPage;
