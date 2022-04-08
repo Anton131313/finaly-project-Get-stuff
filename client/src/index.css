@@ -31,3 +31,9 @@ nav {
   background-color: #FFEEDB;
   padding: 1.5rem 0;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
