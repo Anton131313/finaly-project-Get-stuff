@@ -3,7 +3,7 @@ import styles from './bidding.module.css';
 
 function BiddingForm() {
   return (
-    <div className="content">
+    <div className="container">
       <div className="row" style={styles.BiddingForm}>
         <form className="col s6">
           <div className="row">
