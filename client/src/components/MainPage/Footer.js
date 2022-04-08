@@ -10,7 +10,7 @@ function Footer() {
           {new Date().getFullYear()}
           {' '}
           Copyright Text
-          <p className="right">Служба поддержки: support@getkhlam.ru</p>
+          <p>Служба поддержки: support@getkhlam.ru</p>
         </div>
       </div>
     </footer>
