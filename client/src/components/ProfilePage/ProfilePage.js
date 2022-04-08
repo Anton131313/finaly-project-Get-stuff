@@ -5,24 +5,20 @@ import ProfileList from './ProfileList';
 
 function ProfilePage() {
   return (
-    <div className="row content">
-      <center>
-        <h5>Привет, Джами! Давай расхламляться!</h5>
-      </center>
-      <div className="col s7 push-s5">
-        {' '}
-        <ProfileList />
-        <span className="flow-text" />
-      </div>
-      <div className="col s5 pull-s7">
-        {' '}
-        <AvatarForm />
-        {' '}
-        <ProfileData />
-        {' '}
-        <span className="flow-text" />
+    <div className="content">
+      <div className="container">
+        <div className="row login">
+          <div className="col">
+            <ProfileList />
+          </div>
+          <div className="col">
+            <ProfileData />
+            <AvatarForm />
+          </div>
+        </div>
       </div>
     </div>
+
   );
 }
 
