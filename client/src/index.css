@@ -32,8 +32,19 @@ nav {
   padding: 1.5rem 0;
 }
 
-.container {
+.container1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+.login {
+  margin-top: 5%;
+  width: 300px;
+}
+
+.reg {
+    margin-top: 5%;
+    width: 300px;
+}
+
