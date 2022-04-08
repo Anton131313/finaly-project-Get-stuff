@@ -2,7 +2,6 @@ const sha256 = require('sha256');
 const { User } = require('../../db/models');
 
 const signUp = async (req, res) => {
-  console.log('=================');
   const { name, password, email } = req.body;
 
   if (name && password && email) {
@@ -12,12 +11,10 @@ const signUp = async (req, res) => {
         password: sha256(password),
         email,
       });
-
       req.session.user = {
         id: newUser.id,
-        name: name.name,
+        name,
       };
-
       return res.json({ id: newUser.id, name: name.name });
     } catch (error) {
       return res.sendStatus(500);
