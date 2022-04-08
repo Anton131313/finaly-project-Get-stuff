@@ -5,14 +5,12 @@ import style from './MainPage.module.css';
 function MainPage() {
   return (
 
-  <>
-    <div className={style.content}>
+    <div className="content">
       <center>
         <Banner />
       </center>
     </div>
   );
-
 }
 
 export default MainPage;
