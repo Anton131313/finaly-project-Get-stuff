@@ -15,11 +15,11 @@ code {
 nav {
   padding: 0 1rem;
 }
-.content {
+/* .content {
   background-color: #FFEEDB;
   min-height: calc(100vh - 70px - 63px);
   padding: 1.5rem 0;
-}
+} */
 .user {
   display: flex;
   flex-direction: column;
