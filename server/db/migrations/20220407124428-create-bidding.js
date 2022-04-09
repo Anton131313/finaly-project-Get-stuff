@@ -10,7 +10,7 @@ module.exports = {
       product_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Biddings',
+          model: 'Products',
           key: 'id',
         },
         onDelete: 'cascade',
@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
       },
       end_bidding: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

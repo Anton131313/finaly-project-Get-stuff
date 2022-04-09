@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       product_id: DataTypes.INTEGER,
       price: DataTypes.STRING,
       price_step: DataTypes.STRING,
-      end_bidding: DataTypes.DATE,
+      end_bidding: DataTypes.STRING,
     },
     {
       sequelize,
