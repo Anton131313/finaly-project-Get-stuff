@@ -1,70 +1,64 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ProfileData() {
-  const [data, setData] = useState([]);
-  const [changer, setChanger] = useState(false);
-  const [input, setInput] = useState('');
+  const [inputs, setInputs] = useState();
+  const dispatch = useDispatch();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    setData([...data, { id: Date.now(), text: input }]);
-    setInput('');
-  };
-
-  const changeText = () => {
-
-  };
-
+  const dataUser = useSelector((state) => state.user);
+  useEffect(() => {
+  dataUser && console.log(dataUser);
+  }, [dataUser]);
   return (
-    <div className="col-md-8">
-      <div className="card mb-3">
-        <div className="card-body">
-          <div className="row">
-            <form onSubmit={submitHandler}>
+    <form>
+      <div className="col-md-8">
+        <div className="card mb-3">
+          <div className="card-body">
+            <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Имя</h6>
               </div>
-            </form>
-            <div className="col-sm-9 text-secondary">
-              Kenneth Valdez
+              <div className="col-sm-9 text-secondary">
+                <input className="text" type="text" name="name" />
+              </div>
             </div>
+            <button type="button" className="btn btn-info">
+              <i className="material-icons">
+                edit
+              </i>
+            </button>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <h6 className="mb-0">Email</h6>
+              </div>
+              <div className="col-sm-9 text-secondary">
+                <input className="text" type="text" name="email" />
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <h6 className="mb-0">Телефон</h6>
+              </div>
+              <div className="col-sm-9 text-secondary">
+                <input className="text" type="text" name="phone" />
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <h6 className="mb-0">Город</h6>
+              </div>
+              <div className="col-sm-9 text-secondary">
+                Москва
+              </div>
+            </div>
+            <hr />
           </div>
-          <button type="button" onClick={() => setChanger((prev) => !prev)} className="btn btn-info">
-            <i className="material-icons">
-              edit
-            </i>
-          </button>
-          <hr />
-          <div className="row">
-            <div className="col-sm-3">
-              <h6 className="mb-0">Email</h6>
-            </div>
-            <div className="col-sm-9 text-secondary">
-              fip@jukmuh.al
-            </div>
-          </div>
-          <hr />
-          <div className="row">
-            <div className="col-sm-3">
-              <h6 className="mb-0">Телефон</h6>
-            </div>
-            <div className="col-sm-9 text-secondary">
-              (239) 816-9029
-            </div>
-          </div>
-          <hr />
-          <div className="row">
-            <div className="col-sm-3">
-              <h6 className="mb-0">Город</h6>
-            </div>
-            <div className="col-sm-9 text-secondary">
-              Москва
-            </div>
-          </div>
-          <hr />
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

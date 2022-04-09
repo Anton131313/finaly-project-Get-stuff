@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
       </Routes>
       <Footer />

@@ -7,7 +7,6 @@ export const setUser = (user) => ({
 });
 
 export const signUp = (payload, navigate) => async (dispatch) => {
-  console.log(payload);
   const response = await fetch(config.signUp(), {
     method: 'POST',
     headers: {
@@ -16,10 +15,11 @@ export const signUp = (payload, navigate) => async (dispatch) => {
     credentials: 'include',
     body: JSON.stringify(payload),
   });
+  console.log(await response.json());
   if (response.status === 200) {
     const user = await response.json();
     dispatch(setUser(user));
-    navigate('/');
+    navigate(`/profile/${user.id}`);
   } else {
     navigate('/signup');
   }

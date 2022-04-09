@@ -4,6 +4,8 @@ import ProfileData from './ProfileData';
 import ProfileList from './ProfileList';
 
 function ProfilePage() {
+
+
   return (
     <div className="row content">
       <center>
