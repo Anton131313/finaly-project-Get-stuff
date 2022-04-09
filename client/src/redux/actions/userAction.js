@@ -65,3 +65,25 @@ export const checkAuth = () => async (dispatch) => {
     dispatch(setUser(user));
   }
 };
+
+export const editUser = (user, navigate) => async (dispatch, getState) => {
+  const {
+    user: { id: userId },
+  } = getState();
+
+  const response = await fetch(config.editUser(userId), {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(user),
+  });
+  if (response.status === 200) {
+    const userData = await response.json();
+    dispatch(setUser(userData));
+    navigate(`/users/${userData.id}`);
+  } else {
+    navigate.replace('/');
+  }
+};
