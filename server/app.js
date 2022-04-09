@@ -23,20 +23,20 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use(
-  session({
-    name: app.get('cookieName'),
-    secret: COOKIE_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: new FileStore(),
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 1e3 * 86400,
-    },
-  }),
-);
+// app.use(
+//   session({
+//     name: app.get('cookieName'),
+//     secret: COOKIE_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new FileStore(),
+//     cookie: {
+//       secure: false,
+//       httpOnly: true,
+//       maxAge: 1e3 * 86400,
+//     },
+//   }),
+// );
 
 app.use('/', authRouter);
 app.use('/addBidding', addBiddingRouter);
