@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
       },
       end_bidding: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

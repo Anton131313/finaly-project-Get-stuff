@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       info: DataTypes.TEXT,
       user_id: DataTypes.INTEGER,
       category_id: DataTypes.INTEGER,
-
       condition_id: DataTypes.INTEGER,
       location: DataTypes.STRING,
     },
