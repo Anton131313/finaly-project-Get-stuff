@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function ProfileData() {
   const [data, setData] = useState([]);
-  const [changer, setChanger] = useState(false);
+  const [setChanger] = useState(false);
   const [input, setInput] = useState('');
 
   const submitHandler = (e) => {
@@ -11,9 +11,9 @@ function ProfileData() {
     setInput('');
   };
 
-  const changeText = () => {
+  // const changeText = () => {
 
-  };
+  // };
 
   return (
     <div className="col-md-8">
