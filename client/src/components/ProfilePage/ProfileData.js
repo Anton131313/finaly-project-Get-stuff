@@ -16,6 +16,12 @@ function ProfileData() {
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  // };
+
   return (
     <form>
       <div className="col-md-8">
