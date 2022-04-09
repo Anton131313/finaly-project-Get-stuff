@@ -2,14 +2,10 @@ const sha256 = require('sha256');
 const { User } = require('../../db/models');
 
 const signUp = async (req, res) => {
-<<<<<<< Updated upstream
   const {
     name, password, email, phone, photo,
   } = req.body;
-=======
   console.log(req.body);
-  const { name, password, email } = req.body;
->>>>>>> Stashed changes
 
   if (name && password && email) {
     try {
@@ -24,18 +20,13 @@ const signUp = async (req, res) => {
         id: newUser.id,
         name: newUser.name,
       };
-<<<<<<< Updated upstream
       return res.json({
         id: newUser.id,
         name: newUser.name,
-        email: newUser.email,
-        phone: newUser.phone,
-        photo: newUser.photo,
+        // email: newUser.email,
+        // phone: newUser.phone,
+        // photo: newUser.photo,
       });
-=======
-      console.log(newUser);
-      return res.json({ id: newUser.id, name: newUser.name });
->>>>>>> Stashed changes
     } catch (error) {
       return res.sendStatus(500);
     }
@@ -55,7 +46,6 @@ const signIn = async (req, res) => {
           id: currentUser.id,
           name: currentUser.name,
         };
-
         return res.json({ id: currentUser.id, name: currentUser.userName });
       }
       return res.sendStatus(401);
