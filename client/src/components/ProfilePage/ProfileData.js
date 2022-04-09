@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import * as config from '../../config/config';
-import {editUser} from '../../redux/actions/userActions'
+import { editUser } from '../../redux/actions/userAction';
+import { useDispatch } from 'react-redux';
 
 function ProfileData() {
   const id = useParams();
+  dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
@@ -28,8 +30,7 @@ function ProfileData() {
       credentials: 'include',
       body: JSON.stringify(currentUser),
     });
-    if (resp.status === 200)
-    await dispatch(editUser())
+    if (response.status === 200) { await dispatch(editUser()); }
   };
 
   return (

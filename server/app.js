@@ -10,6 +10,7 @@ const addBiddingRouter = require('./src/routes/addBidding.router'); // Доба�
 const myProductsRouter = require('./src/routes/myProducts.router'); // Показать мои Лоты
 const allProductsRouter = require('./src/routes/allProducts.router'); // Показать Все лоты учавствующие в торгах
 const myBiddingRouter = require('./src/routes/myBidding.router'); // Показать мои Торги (торги в которых я учавствую)
+const userCommentRouter = require('./src/routes/userComment.router'); // комментарий к продукту
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use('/addBidding', addBiddingRouter);
 app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);
 app.use('/myBidding', myBiddingRouter);
+app.use('/addComment', userCommentRouter);
 
 app.listen(PORT, () => {
   console.log('Сервер запущен, порт:', PORT);

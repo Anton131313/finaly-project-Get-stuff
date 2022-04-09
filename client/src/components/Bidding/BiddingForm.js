@@ -1,29 +1,47 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
+import { ProductsThunk } from '../../redux/thunks/productsThunk';
 
 function BiddingForm() {
-  const [inputs, setInputs] = useState({});
+  const [date, setDate] = useState(new Date());
+  const dispatch = useDispatch();
+  // const [photo, setPhoto] = useState([]);
+  const [inputs, setInputs] = useState({
+    title: '',
+    info: '',
+    category_id: '',
+    condition_id: '',
+    location: '',
+    price: '',
+    price_step: '',
+    photo: '',
+  });
+
+  const dateHandler = (e) => {
+    setDate(moment(e.target.value).format('YYYY-MM-DD HH:mm'));
+    console.log(date);
+  };
+  // const photoHandler = (e) => {
+  //   setPhoto([...e.target.file]);
+  //   console.log(photo);
+  // };
 
   const inputHandler = (e) => {
-    setInputs(e.target.value);
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value.trim(),
-    });
+    if (e.target.files) {
+      setInputs((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value,
+        file: e.target.files[0],
+      }));
+    } else {
+      setInputs((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value,
+      }));
+    }
+    console.log(3333, inputs);
   };
-  // const inputHandler = (e) => {
-  //   if (e.target.files) {
-  //     setInputs((prev) => ({
-  //       ...prev,
-  //       [e.target.name]: e.target.value,
-  //       file: e.target.files[0],
-  //     }));
-  //   } else {
-  //     setInputs((prev) => ({
-  //       ...prev,
-  //       [e.target.name]: e.target.value,
-  //     }));
-  //   }
-  // };
 
   // const submitHandler = (e) => {
   //   e.preventDefault();
@@ -34,11 +52,38 @@ function BiddingForm() {
   //   setInputs({});
   // };
 
-  const submitHandler = (e) => {
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log(inputs);
+  // };
+  const addItemToDB = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    // ... submit to API or something
+    const formData = new FormData();
+    formData.append('title', inputs.title);
+    formData.append('info', inputs.info);
+    formData.append('category_id', inputs.category_id);
+    formData.append('location', inputs.location);
+    formData.append('price_step', inputs.price_step);
+    formData.append('end_bidding', date);
+    formData.append('photo', inputs.file, 'image.png');
+    console.log('form data', Object.fromEntries(formData));
+    console.log(formData);
+    dispatch(ProductsThunk(Object.fromEntries(formData)));
   };
+
+  //   try {
+  //     const response = await fetch('http://localhost:3001/addBiddong', {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //       body: formData,
+  //     });
+  //     const data = await response.json();
+  //     dispatch(ProductsThunk());
+  //     console.log('---response', response);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   return (
     <div className="content">
@@ -49,11 +94,16 @@ function BiddingForm() {
               <form action="" className="mt-5 border p-4 bg-light shadow">
                 <h4 className="mb-5 text-secondary">Разместить объявление</h4>
                 <div className="row">
-                  <div className="mb-3 col-md-6">
-                    <label>
-                      Категория товара
-                    </label>
-                    <input onChange={inputHandler} value={inputs.nameCategory} type="text" name="nameCategory" className="form-control" placeholder="Введите категория товара" />
+                  <div className="mb-3 col-md-12">
+                    <select name="category_id" value={inputs.category_id} onChange={inputHandler} className="form-select" aria-label="Default select example">
+                      <option selected>Категория товара</option>
+                      <option value="1">Товары для дома</option>
+                      <option value="2">Одежда</option>
+                      <option value="3">Автотовары</option>
+                      <option value="4">Техника</option>
+                      <option value="5">Зоотовары</option>
+                      <option value="6">Товары для детей</option>
+                    </select>
                   </div>
                   <div className="mb-3 col-md-6">
                     <label>
@@ -74,33 +124,45 @@ function BiddingForm() {
                     <input onChange={inputHandler} value={inputs.location} type="text" name="location" className="form-control" placeholder="Локация товара" />
                   </div>
                   <div className="mb-3 col-md-6">
-                    <label>
+                    <label htmlFor="end_bidding">
                       Ввести дату окончания
                     </label>
-                    <input onChange={inputHandler} value={inputs.location} type="datetime-local" name="end_bidding" className="form-control" placeholder="Дата окончания" />
+                    <input id="end_bidding" onChange={dateHandler} value={date} type="datetime-local" name="end_bidding" className="form-control" placeholder="Дата окончания" />
                   </div>
                   <div className="mb-3 col-md-6">
                     <label>
                       Стартовая цена
                     </label>
-                    <input onChange={inputHandler} value={inputs.price} type="text" name="price" className="form-control" placeholder="Минимум 0" />
+                    <input onChange={inputHandler} value={inputs.price} type="text" name="price" className="form-control" placeholder="Минимум 0 руб." />
+                  </div>
+                  <div className="mb-3 col-md-6">
+                    <label>
+                      Шаг аукциона
+                    </label>
+                    <input onChange={inputHandler} value={inputs.price_step} type="text" name="price_step" className="form-control" placeholder="руб." />
                   </div>
                   <div className="mb-3 col-md-12">
-                    <select name="condition_id" className="form-select" aria-label="Default select example">
-                      <option onChange={inputHandler} selected>Состояние товара</option>
-                      <option onChange={inputHandler} value="1">Идеальное</option>
-                      <option onClick={inputHandler} value="2">Удовлетворительное</option>
-                      <option onClick={inputHandler} value="3">Среднее</option>
-                      <option onClick={inputHandler} value="4">Требует ремонта</option>
-                      <option onClick={inputHandler} value="5">Не годится для использования</option>
+                    <select onChange={inputHandler} value={inputs.condition_id} name="condition_id" className="form-select" aria-label="Default select example">
+                      <option selected>Состояние товара</option>
+                      <option value="1">Идеальное</option>
+                      <option value="2">Удовлетворительное</option>
+                      <option value="3">Среднее</option>
+                      <option value="4">Требует ремонта</option>
+                      <option value="5">Не годится для использования</option>
                     </select>
                   </div>
                   <div className="mb-3 col-md-12">
-                    <label htmlFor="formFileMultiple" className="form-label">Добавить фото</label>
-                    <input value={inputs.fileName || ''} onChange={inputHandler} className="form-control" type="file" id="formFileMultiple" multiple />
+                    <label htmlFor="formFile" className="form-label">Default file input example</label>
+                    <input
+                      value={inputs.photo}
+                      type="file"
+                      className="form-control"
+                      onChange={inputHandler}
+                      id="formFile"
+                    />
                   </div>
                   <div className="col-md-12">
-                    <button onClick={submitHandler} type="submit" className="btn btn-primary float-end">Подтвердить</button>
+                    <button onClick={addItemToDB} type="submit" className="btn btn-primary float-end">Подтвердить</button>
                   </div>
                 </div>
               </form>

@@ -14,8 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
       });
       this.belongsToMany(Bidding, {
+        // as: 'Bidding',
         through: 'User_Biddings',
         foreignKey: 'user_id',
+        // otherKey: 'users_bid',
       });
     }
   }
