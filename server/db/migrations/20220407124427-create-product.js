@@ -23,14 +23,6 @@ module.exports = {
         },
         onDelete: 'cascade',
       },
-      bidding_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Biddings',
-          key: 'id',
-        },
-        onDelete: 'cascade',
-      },
       category_id: {
         type: Sequelize.INTEGER,
         references: {

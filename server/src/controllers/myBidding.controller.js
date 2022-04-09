@@ -1,37 +1,33 @@
 const {
-  Category, Product, Bidding, User, User_Bidding,
+  Category, Product, Bidding, User, Useridding,
 } = require('../../db/models');
 
 const myBidding = async (req, res) => {
   const user_id = 1;
   // const user_id = req.session.user.id;
-  const UserBidding = await User.findAll(
+  const RserBidding = await Product.findAll(
     {
-      where: {
-        id: user_id,
-      },
       include:
-      [Bidding],
-      rav: true,
+      [{ model: Bidding, required: true, include: [{ model: User, where: { id: user_id } }] }],
+      raw: true,
     },
   );
-  // const a = await Bidding.
-  console.log(UserBidding);
+  console.log(RserBidding);
 };
 
 module.exports = {
   myBidding,
 };
 
-// const alcohol = await Alcohol.findAll({ include: [Type_of_alcohol, { model: Company, include: [Country] }] });
-
 /*
+const RserBidding = await User.findAll(
     {
       where: {
         id: user_id,
       },
       include:
       [Bidding],
-      through: { attributes: [] },
+      raw: true,
     },
- */
+  );
+*/

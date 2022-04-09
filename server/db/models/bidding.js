@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ Product, User, User_Bidding }) {
-      this.hasOne(Product, { foreignKey: 'bidding_id' });
+      this.belongsTo(Product, { foreignKey: 'product_id' });
       this.belongsToMany(User, {
         through: 'User_Biddings',
         foreignKey: 'bidding_id',
@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Bidding.init(
     {
+      product_id: DataTypes.INTEGER,
       price: DataTypes.STRING,
       price_step: DataTypes.STRING,
       end_bidding: DataTypes.DATE,

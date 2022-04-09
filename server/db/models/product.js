@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'Comment_User_Products',
         foreignKey: 'product_id',
       });
-      this.belongsTo(Bidding, { foreignKey: 'bidding_id' });
+      this.hasOne(Bidding, { foreignKey: 'product_id' });
     }
   }
   Product.init(
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       info: DataTypes.TEXT,
       user_id: DataTypes.INTEGER,
       category_id: DataTypes.INTEGER,
-      bidding_id: DataTypes.INTEGER,
+
       condition_id: DataTypes.INTEGER,
       location: DataTypes.STRING,
     },
