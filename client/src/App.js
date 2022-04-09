@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
-import Footer from './components/MainPage/Footer';
-import Header from './components/MainPage/Header';
-import Login from './components/MainPage/Login';
+import Footer from './components/UI/Footer';
+import Header from './components/UI/Header';
+import Login from './components/Auth/Login';
 import MainPage from './components/MainPage/MainPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
-import SignUp from './components/MainPage/SignUp';
+import SignUp from './components/Auth/SignUp';
 import BiddingForm from './components/Bidding/BiddingForm';
 
 function App() {
