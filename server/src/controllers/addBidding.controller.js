@@ -11,6 +11,7 @@ const addBidding = async (req, res) => {
     price,
     price_step,
     end_bidding,
+    // 'ТУТ ДОЛЖЕН БЫТЬ ФАЙЛ С ФОТО ИЗ РЕГ-БАДИ',
   } = req.body;
 
   const newBidding = await Bidding.create({
@@ -18,9 +19,6 @@ const addBidding = async (req, res) => {
     price_step,
     end_bidding,
   });
-
-  // const truBidding = await Bidding.findOne({ where: { end_bidding }, raw: true });
-  // const bidding_id = newBidding.id;
 
   const newProduct = await Product.create({
     title,
@@ -30,6 +28,11 @@ const addBidding = async (req, res) => {
     bidding_id: newBidding.dataValues.id,
     condition_id,
     location,
+  });
+
+  const newPhoto = await Photo.create({
+    product_id: newProduct.dataValues.id,
+    photo: `/img/${req.file.originalname}`, // ПРОВЕРИТЬ!
   });
 };
 

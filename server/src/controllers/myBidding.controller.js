@@ -1,18 +1,33 @@
-const {
-  Category, Product, Bidding, User, Useridding,
-} = require('../../db/models');
+const { Product, Bidding, User } = require('../../db/models');
 
 const myBidding = async (req, res) => {
-  const user_id = 1;
+  const user_id = 4;
   // const user_id = req.session.user.id;
-  const RserBidding = await Product.findAll(
-    {
-      include:
-      [{ model: Bidding, required: true, include: [{ model: User, where: { id: user_id } }] }],
-      raw: true,
-    },
-  );
-  console.log(RserBidding);
+  try {
+    const Useridding = await Product.findAll(
+      {
+        include:
+      [{
+        model: Bidding,
+        required: true,
+        include:
+            [{
+              model: User,
+              where: { id: user_id },
+            }],
+      }],
+        raw: true,
+      },
+    );
+    if (Useridding.length === 0) {
+      return res.sendStatus(404);
+    }
+    res.json(Useridding);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+
+  // console.log(Useridding);
 };
 
 module.exports = {
@@ -20,13 +35,10 @@ module.exports = {
 };
 
 /*
-const RserBidding = await User.findAll(
+  const Useridding = await Product.findAll(
     {
-      where: {
-        id: user_id,
-      },
       include:
-      [Bidding],
+      [{ model: Bidding, required: true, include: [{ model: User, where: { id: user_id } }] }],
       raw: true,
     },
   );
