@@ -13,6 +13,7 @@ module.exports = {
       {
         price: '10',
         price_step: '10',
+        product_id: '1',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -20,6 +21,7 @@ module.exports = {
       {
         price: '20',
         price_step: '10',
+        product_id: '2',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -27,6 +29,7 @@ module.exports = {
       {
         price: '30',
         price_step: '10',
+        product_id: '3',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -34,6 +37,7 @@ module.exports = {
       {
         price: '40',
         price_step: '10',
+        product_id: '4',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -41,6 +45,7 @@ module.exports = {
       {
         price: '50',
         price_step: '10',
+        product_id: '5',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -48,6 +53,7 @@ module.exports = {
       {
         price: '60',
         price_step: '10',
+        product_id: '6',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -55,6 +61,7 @@ module.exports = {
       {
         price: '70',
         price_step: '10',
+        product_id: '7',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -62,6 +69,7 @@ module.exports = {
       {
         price: '80',
         price_step: '10',
+        product_id: '8',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -69,6 +77,7 @@ module.exports = {
       {
         price: '90',
         price_step: '10',
+        product_id: '9',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -76,6 +85,7 @@ module.exports = {
       {
         price: '110',
         price_step: '10',
+        product_id: '10',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -83,6 +93,7 @@ module.exports = {
       {
         price: '110',
         price_step: '10',
+        product_id: '11',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -90,6 +101,7 @@ module.exports = {
       {
         price: '120',
         price_step: '10',
+        product_id: '12',
         end_bidding: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),

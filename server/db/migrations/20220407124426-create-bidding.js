@@ -7,6 +7,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      product_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Biddings',
+          key: 'id',
+        },
+        onDelete: 'cascade',
+      },
       price: {
         type: Sequelize.STRING,
       },

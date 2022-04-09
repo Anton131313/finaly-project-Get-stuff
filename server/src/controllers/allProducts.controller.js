@@ -1,8 +1,15 @@
 const { Product } = require('../../db/models');
 
 const allProducts = async (req, res) => {
-  const products = await Product.findAll({ raw: true });
-  console.log(products);
+  try {
+    const products = await Product.findAll({ raw: true }).catch((e) => e);
+    if (products.length === 0) {
+      return res.sendStatus(404);
+    }
+    res.json(products);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
 };
 
 module.exports = {

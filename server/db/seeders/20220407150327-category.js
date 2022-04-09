@@ -13,47 +13,12 @@ module.exports = {
       'Categories',
       [
         {
-          nameCategory: 'Телефоны и аксессуары',
+          nameCategory: 'Товары для дома',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCategory: 'Компьютеры и оргтехника',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Электроника',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Бытовая техника',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Всё для детей',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Украшения и часы',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Сумки и обувь',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Зоотовары',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Дом и сад',
+          nameCategory: 'Одежда',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -63,37 +28,17 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          nameCategory: 'Красота и здоровье',
+          nameCategory: 'Текхника',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCategory: 'Спорт и развлечения',
+          nameCategory: 'Зоотовары',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCategory: 'Одежда для женщин',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Одежда для мужчин',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Канцтовары',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Инструменты',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          nameCategory: 'Мебель',
+          nameCategory: 'Товары для детей',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
