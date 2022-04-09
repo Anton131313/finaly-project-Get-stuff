@@ -13,6 +13,7 @@ const getUser = async (req, res) => {
 };
 
 const editUser = async (req, res) => {
+  console.log('===>')
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
   if (updatedFields.length) {
     updatedFields = Object.fromEntries(updatedFields);
