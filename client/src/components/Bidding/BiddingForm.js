@@ -65,7 +65,7 @@ function BiddingForm() {
     formData.append('location', inputs.location);
     formData.append('price_step', inputs.price_step);
     formData.append('end_bidding', date);
-    formData.append('photo', inputs.file);
+    formData.append('photo', inputs.file, 'image.png');
     console.log('form data', Object.fromEntries(formData));
     console.log(formData);
     dispatch(ProductsThunk(Object.fromEntries(formData)));
@@ -152,14 +152,13 @@ function BiddingForm() {
                     </select>
                   </div>
                   <div className="mb-3 col-md-12">
-                    <label htmlFor="formFileMultiple" className="form-label">Добавить фото</label>
+                    <label htmlFor="formFile" className="form-label">Default file input example</label>
                     <input
                       value={inputs.photo}
                       type="file"
                       className="form-control"
                       onChange={inputHandler}
-                      id="formFileMultiple"
-                      multiple
+                      id="formFile"
                     />
                   </div>
                   <div className="col-md-12">
