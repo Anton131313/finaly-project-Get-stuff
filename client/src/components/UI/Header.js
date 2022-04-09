@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import style from '../MainPage/MainPage.module.css';
 
 function Header() {
+  const user = useSelector((state) => state.user);
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${style.headercolor}`}>
       <div className="container-fluid">
@@ -12,13 +15,25 @@ function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/login">Вход</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to="/signup">Регистрация</Link>
-            </li>
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/logout">Выход</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to={`/profile/${user.id}`}>Личный кабинет</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/login">Вход</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/signup">Регистрация</Link>
+                </li>
+              </>
+            )}
           </ul>
           <form className="d-flex">
             <input className="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" />

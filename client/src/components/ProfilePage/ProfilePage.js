@@ -5,7 +5,10 @@ import ProfileData from './ProfileData';
 import ProfileList from './ProfileList';
 
 function ProfilePage() {
+<<<<<<< Updated upstream
   const dataUser = useSelector((state) => state.user);
+=======
+>>>>>>> Stashed changes
   return (
     <div className="row content">
       <center>
