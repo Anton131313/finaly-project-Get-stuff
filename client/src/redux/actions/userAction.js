@@ -15,7 +15,6 @@ export const signUp = (payload, navigate) => async (dispatch) => {
     credentials: 'include',
     body: JSON.stringify(payload),
   });
-  console.log(await response.json());
   if (response.status === 200) {
     const user = await response.json();
     dispatch(setUser(user));

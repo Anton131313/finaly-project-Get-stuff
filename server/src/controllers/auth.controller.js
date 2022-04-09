@@ -2,7 +2,6 @@ const sha256 = require('sha256');
 const { User } = require('../../db/models');
 
 const signUp = async (req, res) => {
-  console.log(req.body);
   const {
     name, password, email, phone, photo,
   } = req.body;
