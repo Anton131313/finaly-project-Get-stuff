@@ -20,5 +20,4 @@ function BiddingList() {
     </div>
   );
 }
-
-export default BiddingList;
+//export default BiddingList;

@@ -6,4 +6,4 @@ export const signOut = () => `${host}/logout`;
 export const checkAuth = () => `${host}/check`;
 
 export const getUser = (id) => `${host}/profile/${id}`;
-export const editUser = (id) => `${host}/users/${id}`;
+export const editUser = (id) => `${host}/profile/${id}`;

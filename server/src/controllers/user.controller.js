@@ -1,7 +1,6 @@
 const { User } = require('../../db/models');
 
 const getUser = async (req, res) => {
-  console.log(req.params);
   const { id } = req.params;
   try {
     const currentUser = await User.findByPk(id);
@@ -13,8 +12,8 @@ const getUser = async (req, res) => {
 };
 
 const editUser = async (req, res) => {
-  console.log('===>')
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
+  console.log('===>', updatedFields);
   if (updatedFields.length) {
     updatedFields = Object.fromEntries(updatedFields);
     try {
@@ -34,5 +33,5 @@ const editUser = async (req, res) => {
 
 module.exports = {
   getUser,
-  editUser
+  editUser,
 };

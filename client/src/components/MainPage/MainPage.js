@@ -7,7 +7,7 @@ function MainPage() {
     <div className="content">
       <center>
         <Banner />
-        <BiddingList />
+        {/* <BiddingList /> */}
       </center>
     </div>
   );
