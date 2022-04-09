@@ -7,7 +7,6 @@ export const setUser = (user) => ({
 });
 
 export const signUp = (payload, navigate) => async (dispatch) => {
-  console.log(payload);
   const response = await fetch(config.signUp(), {
     method: 'POST',
     headers: {
@@ -16,10 +15,11 @@ export const signUp = (payload, navigate) => async (dispatch) => {
     credentials: 'include',
     body: JSON.stringify(payload),
   });
+
   if (response.status === 200) {
     const user = await response.json();
     dispatch(setUser(user));
-    navigate('/');
+    navigate(`/profile/${user.id}`);
   } else {
     navigate('/signup');
   }
@@ -63,5 +63,27 @@ export const checkAuth = () => async (dispatch) => {
   if (response.status === 200) {
     const user = await response.json();
     dispatch(setUser(user));
+  }
+};
+
+export const editUser = (user, navigate) => async (dispatch, getState) => {
+  const {
+    user: { id: userId },
+  } = getState();
+
+  const response = await fetch(config.editUser(userId), {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(user),
+  });
+  if (response.status === 200) {
+    const userData = await response.json();
+    dispatch(setUser(userData));
+    navigate(`/users/${userData.id}`);
+  } else {
+    navigate.replace('/');
   }
 };

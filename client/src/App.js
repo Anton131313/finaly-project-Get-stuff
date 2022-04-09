@@ -7,6 +7,7 @@ import MainPage from './components/MainPage/MainPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import SignUp from './components/Auth/SignUp';
 import BiddingForm from './components/Bidding/BiddingForm';
+import LogOut from './components/Auth/LogOut';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/logout" element={<LogOut />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
       </Routes>
       <Footer />

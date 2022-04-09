@@ -5,6 +5,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 
 const authRouter = require('./src/routes/auth.router'); // авторизация
+const usersRouter = require('./src/routes/user.router');
 const addBiddingRouter = require('./src/routes/addBidding.router'); // Добавить ЛОТ\открыть торги
 const myProductsRouter = require('./src/routes/myProducts.router'); // Показать мои Лоты
 const allProductsRouter = require('./src/routes/allProducts.router'); // Показать Все лоты учавствующие в торгах
@@ -13,7 +14,7 @@ const userCommentRouter = require('./src/routes/userComment.router'); // ком�
 
 const app = express();
 
-const { PORT, SECRET, COOKIE_NAME } = process.env;
+const { PORT, COOKIE_SECRET, COOKIE_NAME } = process.env;
 
 app.set('cookieName', COOKIE_NAME);
 
@@ -27,7 +28,7 @@ app.use(express.json());
 app.use(
   session({
     name: app.get('cookieName'),
-    secret: SECRET,
+    secret: COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new FileStore(),
@@ -40,6 +41,7 @@ app.use(
 );
 
 app.use('/', authRouter);
+app.use('/profile', usersRouter);
 app.use('/addBidding', addBiddingRouter);
 app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);
