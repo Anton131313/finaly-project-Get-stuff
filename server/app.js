@@ -5,6 +5,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 
 const authRouter = require('./src/routes/auth.router'); // авторизация
+const usersRouter = require('./src/routes/user.router');
 const addBiddingRouter = require('./src/routes/addBidding.router'); // Добавить ЛОТ\открыть торги
 const myProductsRouter = require('./src/routes/myProducts.router'); // Показать мои Лоты
 const allProductsRouter = require('./src/routes/allProducts.router'); // Показать Все лоты учавствующие в торгах
@@ -39,6 +40,7 @@ app.use(
 );
 
 app.use('/', authRouter);
+app.use('/profile', usersRouter);
 app.use('/addBidding', addBiddingRouter);
 app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);

@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import * as config from '../../config/config';
+import {editUser} from '../../redux/actions/userActions'
 
 function ProfileData() {
-  const [input, setInput] = useState();
-  const dispatch = useDispatch();
-
-  const dataUser = useSelector((state) => state.user);
+  const id = useParams();
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    setInput({
-      name: dataUser.name, email: dataUser.email, phone: dataUser.phone, photo: dataUser.photo,
-    });
-  }, [dataUser]);
+    axios.get(`${config.getUser(id.id)}`)
+      .then((response) => setCurrentUser(response.data));
+  }, []);
 
   const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    setCurrentUser({ ...currentUser, [e.target.name]: e.target.value });
   };
+  console.log(currentUser);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`${config.editUser(id.id)}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(currentUser),
+    });
+    if (resp.status === 200)
+    await dispatch(editUser())
+  };
 
   return (
     <form>
@@ -32,21 +42,26 @@ function ProfileData() {
                 <h6 className="mb-0">Имя</h6>
               </div>
               <div className="col-sm-9 text-secondary">
-                <input className="text" type="text" name="name" value={input?.name} placeholder="Имя" onChange={handleChange} />
+                <input className="text" type="text" name="name" placeholder="Имя" value={currentUser.name} onChange={handleChange} />
+                <button type="button" className="btn btn-secondary mx-3">
+                  <i className="material-icons">
+                    edit
+                  </i>
+                </button>
               </div>
             </div>
-            <button type="button" className="btn btn-info">
-              <i className="material-icons">
-                edit
-              </i>
-            </button>
             <hr />
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Email</h6>
               </div>
               <div className="col-sm-9 text-secondary">
-                <input className="text" type="text" name="email" placeholder="Email" value={input?.email} />
+                <input className="text" type="text" name="email" placeholder="Email" value={currentUser.email} onChange={handleChange} />
+                <button type="button" className="btn btn-secondary mx-3">
+                  <i className="material-icons">
+                    edit
+                  </i>
+                </button>
               </div>
             </div>
             <hr />
@@ -55,7 +70,12 @@ function ProfileData() {
                 <h6 className="mb-0">Телефон</h6>
               </div>
               <div className="col-sm-9 text-secondary">
-                <input className="text" type="text" name="phone" placeholder="Телефон" value={input?.phone} />
+                <input className="text" type="text" name="phone" placeholder="Телефон" value={currentUser.phone} onChange={handleChange} />
+                <button type="button" className="btn btn-secondary mx-3">
+                  <i className="material-icons">
+                    edit
+                  </i>
+                </button>
               </div>
             </div>
             <hr />
@@ -70,7 +90,7 @@ function ProfileData() {
           </div>
         </div>
       </div>
-      <button className="btn btn-secondary">Сохранить изменения</button>
+      <button className="btn btn-secondary" onClick={handleSubmit}>Сохранить изменения</button>
     </form>
   );
 }

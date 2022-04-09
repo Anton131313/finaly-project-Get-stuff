@@ -6,6 +6,7 @@ import ProfileList from './ProfileList';
 
 function ProfilePage() {
   const dataUser = useSelector((state) => state.user);
+
   return (
     <div className="row content">
       <center>

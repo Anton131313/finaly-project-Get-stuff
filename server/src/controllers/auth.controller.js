@@ -5,6 +5,7 @@ const signUp = async (req, res) => {
   const {
     name, password, email, phone, photo,
   } = req.body;
+  console.log(req.body);
 
   if (name && password && email) {
     try {
@@ -17,14 +18,14 @@ const signUp = async (req, res) => {
       });
       req.session.user = {
         id: newUser.id,
-        name,
+        name: newUser.name,
       };
       return res.json({
         id: newUser.id,
         name: newUser.name,
-        email: newUser.email,
-        phone: newUser.phone,
-        photo: newUser.photo,
+        // email: newUser.email,
+        // phone: newUser.phone,
+        // photo: newUser.photo,
       });
     } catch (error) {
       return res.sendStatus(500);
@@ -45,7 +46,6 @@ const signIn = async (req, res) => {
           id: currentUser.id,
           name: currentUser.name,
         };
-
         return res.json({ id: currentUser.id, name: currentUser.userName });
       }
       return res.sendStatus(401);
