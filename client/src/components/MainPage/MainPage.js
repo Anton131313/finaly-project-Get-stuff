@@ -1,5 +1,5 @@
 import React from 'react';
-import BiddingList from '../Bidding/BiddingList';
+// import BiddingList from '../Bidding/BiddingList';
 import Banner from './Banner';
 
 function MainPage() {
@@ -7,7 +7,7 @@ function MainPage() {
     <div className="content">
       <center>
         <Banner />
-        {/* <BiddingList /> */}
+
       </center>
     </div>
   );
