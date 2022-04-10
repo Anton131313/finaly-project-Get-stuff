@@ -5,7 +5,7 @@ const checkAuthor = require('../middlewares/checkAuthor');
 
 const userRouter = Router();
 
-userRouter.get('/:id', getUser);
+userRouter.get('/:id', checkAuth, getUser);
 userRouter.patch('/:id', checkAuth, checkAuthor, editUser);
 
 module.exports = userRouter;
