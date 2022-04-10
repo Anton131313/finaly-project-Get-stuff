@@ -1,42 +1,56 @@
 const { Bidding, Product, Photo } = require('../../db/models');
 
 const addBidding = async (req, res) => {
-  console.log(req.body.formData);
-
+  // console.log(req.body);
   const user_id = 1; // временный хардкод
+
   const {
     title,
     info,
     category_id,
-    // condition_id,
+    condition_id, // не приходит
     location,
-    // price,
+    price, // не приходит
     price_step,
     end_bidding,
   } = await req.body.formData;
 
-  const newProduct = await Product.create({
-    title,
-    info,
-    user_id,
-    category_id: Number(category_id),
-    condition_id: 3,
-    location,
-  });
-  console.log(newProduct);
+  let newProduct;
 
-  // const newBidding = await Bidding.create({
-  //   newProduct.dataValues.id
-  //   price,
-  //   price_step,
-  //   end_bidding,
-  // });
-  // console.log(newBidding);
-
-  // const newPhoto = await Photo.create({
-  //   product_id: newProduct.dataValues.id,
-  //   photo: 'Тут типа фото лежит',
-  // });
+  try {
+    try {
+      newProduct = await Product.create({
+        title,
+        info,
+        user_id,
+        category_id, // : Number(category_id),
+        condition_id, // : 3,
+        location,
+      });
+    } catch (error) {
+      res.json({ message: 'Не удалось занести продукт в базу данных' });
+    }
+    try {
+      const newBidding = await Bidding.create({
+        product_id: newProduct.id,
+        price, // : '500',
+        price_step,
+        end_bidding,
+      });
+    } catch (error) {
+      res.json({ message: 'Не удалось открыть торги' });
+    }
+    try {
+      const newPhoto = await Photo.create({
+        product_id: newProduct.id,
+        photo: req.file.originalname,
+      });
+    } catch (error) {
+      res.json({ message: 'Не сохранить фотографию' });
+    }
+  } catch (error) {
+    res.json({ message: 'чёт пошло не так' });
+  }
 };
 
 module.exports = {
