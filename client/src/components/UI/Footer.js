@@ -10,7 +10,7 @@ function Footer() {
             <div className="text-center">
               © 2022 Copyright:
               <p className="text-black" href="/">
-                Служба поддержки: support@getkhlam.ru
+                Служба поддержки: support@getstuff.ru
               </p>
             </div>
           </footer>
