@@ -1,43 +1,37 @@
 const { Bidding, Product, Photo } = require('../../db/models');
-
 const addBidding = async (req, res) => {
-  // console.log('ya tut', req.file);
-  // console.log(req.body);
+  const user_id = 1; // временный хардкод
+  console.log(req.body)
+  // console.log(`<==========${req.session.user}==========>`);
+  // console.log(`==========>${req.file.originalname}<==========`);
   const {
     title,
     info,
     category_id,
-    // condition_id, // не приходит
-    location,
-    price, // не приходит
+    condition_id,
+    price,
     price_step,
     end_bidding,
+    location,
   } = await req.body;
-
-  const user_id = 1; // временный хардкод
-
   const newProduct = await Product.create({
     title,
     info,
     user_id,
-    category_id, // : Number(category_id),
-    condition_id: 2, // : 3,
+    category_id: Number(category_id),
+    condition_id: Number(condition_id),
     location,
   });
-  console.log(newProduct);
-  if (newProduct) {
-    const newBidding = await Bidding.create({
-      product_id: newProduct.id,
-      price, // : '500',
-      price_step,
-      end_bidding,
-    });
-    const newPhoto = await Photo.create({
-      product_id: newProduct.id,
-      photo: req.file.originalname,
-    });
-    res.sendStatus(200);
-  }
+  const newBidding = await Bidding.create({
+    product_id: newProduct.id,
+    price,
+    price_step,
+    end_bidding,
+  });
+  const newPhoto = await Photo.create({
+    product_id: newProduct.id,
+    photo: req.file.originalname,
+  });
   // const {
   //   title,
   //   info,

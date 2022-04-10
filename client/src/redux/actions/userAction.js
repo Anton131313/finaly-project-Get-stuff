@@ -66,12 +66,11 @@ export const checkAuth = () => async (dispatch) => {
   }
 };
 
-
 export const editUser = (dataFromUser) => async (dispatch) => {
   // const {
   //   user: { id: userId },
   // } = getState();
-console.log('JJJJ',dataFromUser);
+  console.log('JJJJ', dataFromUser);
   // const response = await fetch(config.editUser(userId), {
   //   method: 'PATCH',
   //   headers: {
@@ -82,8 +81,8 @@ console.log('JJJJ',dataFromUser);
   // });
   // if (response.status === 200) {
   //   const userData = await response.json();
-    dispatch(setUser(dataFromUser));
-    // navigate(`/users/${dataFromUser.id}`);
+  dispatch(setUser(dataFromUser));
+  // navigate(`/users/${dataFromUser.id}`);
   // } else {
   //   navigate.replace('/');
   // }

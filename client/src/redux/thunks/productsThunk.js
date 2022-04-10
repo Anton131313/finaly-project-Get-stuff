@@ -11,7 +11,14 @@ export const AddProductThunk = (formData) => (dispatch) => {
     .then((res) => dispatch(addProduct(res.data)));
 };
 
-// export const getAllProductsFromDB = () => (dispatch) => {
+export const getAllProductsFromDB = () => (dispatch) => {
+  axios.get('http://localhost:3001/allProducts')
+    // .then((response) => console.log(3333, response.data));
+    .then((res) => dispatch(allProducts(res.data)));
+};
+
+// export const deleteProductFromDB = (id) => (dispatch) => {
 //   axios.get('http://localhost:3001/allProducts')
-//     .then((res) => dispatch(allProducts(res.data))),
+//     // .then((response) => console.log(response.data));
+//     .then((res) => dispatch(deleteProduct(id)));
 // };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-import { AddProductThunk, ProductsThunk } from '../../redux/thunks/productsThunk';
+import { AddProductThunk } from '../../redux/thunks/productsThunk';
 
 function BiddingForm() {
   const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY HH-mm'));
@@ -62,6 +62,7 @@ function BiddingForm() {
     formData.append('title', inputs.title);
     formData.append('info', inputs.info);
     formData.append('category_id', inputs.category_id);
+    formData.append('condition_id', inputs.condition_id);
     formData.append('location', inputs.location);
     formData.append('price_step', inputs.price_step);
     formData.append('price', inputs.price);
@@ -128,9 +129,18 @@ function BiddingForm() {
                     <label htmlFor="end_bidding">
                       Ввести дату окончания
                     </label>
-                    <input id="end_bidding" onChange={dateHandler}
+                    <input
+                      id="end_bidding"
+                      onChange={dateHandler}
                     //  value="2018-06-12T19:30"
-                    min="2022-04-01T00:00" max="2024-12-30T00:00" type="datetime-local" name="end_bidding" className="form-control" placeholder="Дата окончания" required />
+                      min="2022-04-01T00:00"
+                      max="2024-12-30T00:00"
+                      type="datetime-local"
+                      name="end_bidding"
+                      className="form-control"
+                      placeholder="Дата окончания"
+                      required
+                    />
                   </div>
                   <div className="mb-3 col-md-6">
                     <label>
