@@ -22,19 +22,47 @@ function ProfileData() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${config.editUser(id.id)}`, {
+    const res = await fetch(`${config.editUser(id.id)}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
       body: JSON.stringify(currentUser),
-    });
-    if (response.status === 200) { await dispatch(editUser()); }
+    })
+      .then((response) => response.json())
+      .then((data) => dispatch(editUser(data)));
+    // if (response.status === 200) { await dispatch(editUser(response.json())); }
   };
 
   return (
     <form>
+      <div className="container">
+        <div className="main-body">
+          <div className="row gutters-sm">
+            <div className="col-md-4 mb-3">
+              <div className="card">
+                <div className="card-body">
+                  <div className="d-flex flex-column align-items-center text-center">
+                    <img src={currentUser.photo} alt="profilephoto" className="rounded-circle" width="150" />
+                    <div className="mt-3">
+                      <h4>{currentUser.name}</h4>
+                      <input
+                        className="inputphoto input-file"
+                        id="file"
+                        onChange={handleChange}
+                        accept="image/*"
+                        type="file"
+                        name="img"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="col-md-8">
         <div className="card mb-3">
           <div className="card-body">
@@ -44,11 +72,6 @@ function ProfileData() {
               </div>
               <div className="col-sm-9 text-secondary">
                 <input className="text" type="text" name="name" placeholder="Имя" value={currentUser.name} onChange={handleChange} />
-                <button type="button" className="btn btn-secondary mx-3">
-                  <i className="material-icons">
-                    edit
-                  </i>
-                </button>
               </div>
             </div>
             <hr />
@@ -58,11 +81,6 @@ function ProfileData() {
               </div>
               <div className="col-sm-9 text-secondary">
                 <input className="text" type="text" name="email" placeholder="Email" value={currentUser.email} onChange={handleChange} />
-                <button type="button" className="btn btn-secondary mx-3">
-                  <i className="material-icons">
-                    edit
-                  </i>
-                </button>
               </div>
             </div>
             <hr />
@@ -72,11 +90,6 @@ function ProfileData() {
               </div>
               <div className="col-sm-9 text-secondary">
                 <input className="text" type="text" name="phone" placeholder="Телефон" value={currentUser.phone} onChange={handleChange} />
-                <button type="button" className="btn btn-secondary mx-3">
-                  <i className="material-icons">
-                    edit
-                  </i>
-                </button>
               </div>
             </div>
             <hr />
