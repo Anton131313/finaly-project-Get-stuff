@@ -1,7 +1,6 @@
 import { ALL_PRODUCTS, ADD_PRODUCT } from '../types/productTypes';
 
-const productsReducer = (state = [], action) => {
-  const { type, payload } = action;
+const productsReducer = (state = [], { type, payload } = {}) => {
   switch (type) {
     case ALL_PRODUCTS:
       return payload;
