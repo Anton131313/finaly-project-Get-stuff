@@ -62,6 +62,7 @@ function BiddingForm() {
     formData.append('title', inputs.title);
     formData.append('info', inputs.info);
     formData.append('category_id', inputs.category_id);
+    formData.append('condition_id', inputs.condition_id);
     formData.append('location', inputs.location);
     formData.append('price_step', inputs.price_step);
     formData.append('price', inputs.price);
