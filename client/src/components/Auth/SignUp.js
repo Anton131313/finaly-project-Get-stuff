@@ -33,7 +33,7 @@ function SignUp() {
         <form onSubmit={submitHandler} className="col s12">
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Имя</label>
-            <input name="name" onChange={changeHandler} value={userSignUp.name} type="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите почту" />
+            <input name="name" onChange={changeHandler} value={userSignUp.name} type="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите имя" />
           </div>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">Email</label>

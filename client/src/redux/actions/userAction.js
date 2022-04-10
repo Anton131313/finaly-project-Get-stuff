@@ -66,6 +66,7 @@ export const checkAuth = () => async (dispatch) => {
   }
 };
 
+
 export const editUser = (dataFromUser) => async (dispatch) => {
   // const {
   //   user: { id: userId },
