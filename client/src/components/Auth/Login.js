@@ -9,6 +9,8 @@ function Login() {
     password: '',
   });
 
+  const [error, setError] = useState(false);
+
   const navigate = useNavigate();
   const from = { pathname: '/' };
 
@@ -23,7 +25,9 @@ function Login() {
     let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]));
     if (payload.length) {
       payload = Object.fromEntries(payload);
-      dispatch(signIn(payload, navigate, from));
+      dispatch(signIn(payload, navigate, from, setError));
+    } else {
+      dispatch(signIn(payload, navigate));
     }
   };
 
@@ -55,10 +59,10 @@ function Login() {
               id="exampleInputPassword1"
               placeholder="Введите пароль"
             />
+            { error ? <p>*Ввведите правильный логин или пароль</p> : <p />}
           </div>
           <button type="submit" className="btn btn-warning">Авторизоваться</button>
         </form>
-
       </div>
     </center>
   );

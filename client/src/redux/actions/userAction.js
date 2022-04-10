@@ -6,7 +6,7 @@ export const setUser = (user) => ({
   payload: user,
 });
 
-export const signUp = (payload, navigate) => async (dispatch) => {
+export const signUp = (payload, navigate, setError) => async (dispatch) => {
   const response = await fetch(config.signUp(), {
     method: 'POST',
     headers: {
@@ -20,12 +20,13 @@ export const signUp = (payload, navigate) => async (dispatch) => {
     const user = await response.json();
     dispatch(setUser(user));
     navigate(`/profile/${user.id}`);
-  } else {
-    navigate('/signup');
+  } else if (response.status === 400) {
+    setError(true);
+    setTimeout(() => { navigate('/login'); }, 1500);
   }
 };
 
-export const signIn = (payload, navigate, from) => async (dispatch) => {
+export const signIn = (payload, navigate, from, setError) => async (dispatch) => {
   const response = await fetch(config.signIn(), {
     method: 'POST',
     headers: {
@@ -38,8 +39,8 @@ export const signIn = (payload, navigate, from) => async (dispatch) => {
     const user = await response.json();
     dispatch(setUser(user));
     navigate(from);
-  } else {
-    navigate('/signin');
+  } else if (response.status === 401) {
+    setError(true);
   }
 };
 
@@ -66,12 +67,11 @@ export const checkAuth = () => async (dispatch) => {
   }
 };
 
-
 export const editUser = (dataFromUser) => async (dispatch) => {
   // const {
   //   user: { id: userId },
   // } = getState();
-console.log('JJJJ',dataFromUser);
+  console.log('JJJJ', dataFromUser);
   // const response = await fetch(config.editUser(userId), {
   //   method: 'PATCH',
   //   headers: {
@@ -82,8 +82,8 @@ console.log('JJJJ',dataFromUser);
   // });
   // if (response.status === 200) {
   //   const userData = await response.json();
-    dispatch(setUser(dataFromUser));
-    // navigate(`/users/${dataFromUser.id}`);
+  dispatch(setUser(dataFromUser));
+  // navigate(`/users/${dataFromUser.id}`);
   // } else {
   //   navigate.replace('/');
   // }

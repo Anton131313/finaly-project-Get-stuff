@@ -10,6 +10,8 @@ function SignUp() {
     userName: '',
   });
 
+  const [error, setError] = useState(false);
+
   const navigate = useNavigate();
 
   const changeHandler = (e) => {
@@ -23,6 +25,8 @@ function SignUp() {
     let payload = Object.entries(userSignUp).filter((el) => (el[1] ? el[1].trim() : el[1]));
     if (payload.length) {
       payload = Object.fromEntries(payload);
+      dispatch(signUp(payload, navigate, setError));
+    } else {
       dispatch(signUp(payload, navigate));
     }
   };
@@ -43,7 +47,7 @@ function SignUp() {
             <label htmlFor="exampleInputPassword1" className="form-label">Пароль</label>
             <input name="password" onChange={changeHandler} value={userSignUp.password} type="password" className="form-control" id="exampleInputPassword1" placeholder="Придумайте пароль" />
           </div>
-
+          { error ? <p>*Такой профиль существует, войдите в свой профиль </p> : <p />}
           <button type="submit" className="btn btn-warning">Регистрация</button>
         </form>
       </div>

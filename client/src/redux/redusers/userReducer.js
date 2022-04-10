@@ -6,7 +6,6 @@ const userReducer = (state = null, { type, payload } = {}) => {
       return payload;
     case DELETE_USER:
       return null;
-
     default:
       return state;
   }

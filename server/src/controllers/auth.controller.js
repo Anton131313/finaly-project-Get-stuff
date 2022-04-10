@@ -29,7 +29,6 @@ const signUp = async (req, res) => {
       }
     }
   }
-
   return res.sendStatus(400);
 };
 
@@ -51,7 +50,6 @@ const signIn = async (req, res) => {
       return res.sendStatus(500);
     }
   }
-
   return res.sendStatus(400);
 };
 
