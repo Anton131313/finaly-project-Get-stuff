@@ -5,26 +5,28 @@ const signUp = async (req, res) => {
   const {
     name, password, email, phone, photo,
   } = req.body;
-
-  if (name && password && email) {
-    try {
-      const newUser = await User.create({
-        name,
-        password: sha256(password),
-        email,
-        phone,
-        photo,
-      });
-      req.session.user = {
-        id: newUser.id,
-        name: newUser.name,
-      };
-      return res.json({
-        id: newUser.id,
-        name: newUser.name,
-      });
-    } catch (error) {
-      return res.sendStatus(500);
+  const oldUser = await User.findOne({ where: { email }, raw: true });
+  if (!oldUser) {
+    if (name && password && email) {
+      try {
+        const newUser = await User.create({
+          name,
+          password: sha256(password),
+          email,
+          phone,
+          photo,
+        });
+        req.session.user = {
+          id: newUser.id,
+          name: newUser.name,
+        };
+        return res.json({
+          id: newUser.id,
+          name: newUser.name,
+        });
+      } catch (error) {
+        return res.sendStatus(500);
+      }
     }
   }
 
