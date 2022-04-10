@@ -3,7 +3,7 @@ const { Bidding, Product, Photo } = require('../../db/models');
 const addBidding = async (req, res) => {
   console.log(req.body.formData);
 
-  const user_id = 1;
+  const user_id = 1; // временный хардкод
   const {
     title,
     info,
@@ -13,7 +13,6 @@ const addBidding = async (req, res) => {
     // price,
     price_step,
     end_bidding,
-    // product_id,
   } = await req.body.formData;
 
   const newProduct = await Product.create({
@@ -27,7 +26,7 @@ const addBidding = async (req, res) => {
   console.log(newProduct);
 
   // const newBidding = await Bidding.create({
-  //   product_id,
+  //   newProduct.dataValues.id
   //   price,
   //   price_step,
   //   end_bidding,
