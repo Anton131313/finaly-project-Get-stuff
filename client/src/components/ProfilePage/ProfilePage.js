@@ -10,14 +10,14 @@ function ProfilePage() {
 
   if (+id.id === dataUser.id) {
     return (
-      <div className="row content">
+      <div className="row content my-3">
         <center>
-          <h5>
+          <h4>
             Привет,
             {' '}
             {dataUser.name}
             ! Давай расхламляться!
-          </h5>
+          </h4>
         </center>
         <div className="col s5 pull-s7">
           <ProfileData />

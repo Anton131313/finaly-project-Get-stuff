@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+const path = require('path');
 const FileStore = require('session-file-store')(session);
 
 const authRouter = require('./src/routes/auth.router'); // авторизация
@@ -25,6 +26,7 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     name: app.get('cookieName'),

@@ -25,7 +25,7 @@ export const signUp = (payload, navigate) => async (dispatch) => {
   }
 };
 
-export const signIn = (payload, navigate, from) => async (dispatch) => {
+export const signIn = (payload, navigate) => async (dispatch) => {
   const response = await fetch(config.signIn(), {
     method: 'POST',
     headers: {
@@ -37,7 +37,7 @@ export const signIn = (payload, navigate, from) => async (dispatch) => {
   if (response.status === 200) {
     const user = await response.json();
     dispatch(setUser(user));
-    navigate(from);
+    navigate(`/profile/${user.id}`);
   } else {
     navigate('/signin');
   }
