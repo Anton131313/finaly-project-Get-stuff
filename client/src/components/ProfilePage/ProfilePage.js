@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import MyBiddings from '../Bidding/MyBiddings';
 import ProfileData from './ProfileData';
 import ProfileList from './ProfileList';
 
@@ -26,6 +27,7 @@ function ProfilePage() {
           {' '}
           {' '}
           <span className="flow-text" />
+          <MyBiddings />
         </div>
       </div>
     );

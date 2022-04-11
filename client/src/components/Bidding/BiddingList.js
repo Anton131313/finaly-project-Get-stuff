@@ -1,35 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProductsFromDB } from '../../redux/thunks/productsThunk';
 import BiddingCard from './BiddingCard';
 
 function BiddingList() {
   const products = useSelector((store) => store.products);
+  const [buttonState, setbuttonState] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProductsFromDB());
+    setbuttonState(false);
   }, []);
   console.log(999999999999, products);
   return (
-    <div className="container">
+    <div className="list mt-5">
+      <div>
+        <h3>Все объявления</h3>
+      </div>
       {/* {pages.length && <Pagination />} */}
-      <div className="container mt-3">
-        <h2>Все объявления</h2>
-      </div>
-      <div className="list mt-5">
-        {products?.map((el) => (
-          <BiddingCard
-            key={el.id}
-            id={el.id}
-            img={el.img}
-            title={el.title}
-            info={el.info}
-            condition={el['Condition.nameCondition']}
-            category={el['Category.nameCategory']}
-            location={el.location}
-          />
-        ))}
-      </div>
+      {products?.map((el) => (
+        <BiddingCard
+          key={el.id}
+          id={el.id}
+          img={el.img}
+          title={el.title}
+          info={el.info}
+          condition={el['Condition.nameCondition']}
+          category={el['Category.nameCategory']}
+          location={el.location}
+          buttonState={buttonState}
+        />
+      ))}
     </div>
   );
 }

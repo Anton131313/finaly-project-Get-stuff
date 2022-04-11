@@ -25,6 +25,7 @@ function App() {
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
         <Route path="/AuctionCard" element={<AuctionCard />} />
+        <Route path="/bidding/:id" element={<AuctionCard />} />
       </Routes>
       <Footer />
     </>
