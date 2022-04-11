@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const FileStore = require('session-file-store')(session);
 
+const checkSession = require('./src/middlewares/checkSession');
 const authRouter = require('./src/routes/auth.router'); // авторизация
 const usersRouter = require('./src/routes/user.router'); // показать, редактировать юзера
 const addBiddingRouter = require('./src/routes/addBidding.router'); // Добавить ЛОТ\открыть торги
@@ -26,22 +27,21 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-  session({
-    name: app.get('cookieName'),
-    secret: COOKIE_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: new FileStore(),
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 1e3 * 86400,
-    },
-  }),
-);
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
+const sessionConfig = {
+  store: new FileStore(),
+  key: 'sid',
+  secret: COOKIE_SECRET,
+  resave: false,
+  saveUninitialized: false, // в жизни обычно ставиться фолс что бы не сохранять пустую сессию
+  httpOnly: true,
+  cookie: { secure: false, expires: 24 * 60 * 60e3 },
+};
+
+app.use(session(sessionConfig));
+
+app.use(checkSession);
 app.use('/', authRouter);
 app.use('/profile', usersRouter);
 app.use('/addBidding', addBiddingRouter);
