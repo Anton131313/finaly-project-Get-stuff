@@ -23,6 +23,9 @@ const signUp = async (req, res) => {
         return res.json({
           id: newUser.id,
           name: newUser.name,
+          email: newUser.name,
+          phone: newUser.phone,
+          photo: newUser.photo,
         });
       } catch (error) {
         return res.sendStatus(500);
@@ -43,7 +46,13 @@ const signIn = async (req, res) => {
           id: currentUser.id,
           name: currentUser.name,
         };
-        return res.json({ id: currentUser.id, name: currentUser.name });
+        return res.json({
+          id: currentUser.id,
+          name: currentUser.name,
+          email: currentUser.name,
+          phone: currentUser.phone,
+          photo: currentUser.photo,
+        });
       }
       return res.sendStatus(401);
     } catch (error) {

@@ -12,7 +12,6 @@ function Login() {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-  const from = { pathname: `/profile/` };
 
   const changeHandler = (e) => {
     setUserSignIn((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,7 +24,7 @@ function Login() {
     let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]));
     if (payload.length) {
       payload = Object.fromEntries(payload);
-      dispatch(signIn(payload, navigate, from, setError));
+      dispatch(signIn(payload, navigate, setError));
     } else {
       dispatch(signIn(payload, navigate));
     }
