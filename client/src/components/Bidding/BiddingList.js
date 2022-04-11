@@ -13,6 +13,9 @@ function BiddingList() {
   return (
     <div className="container">
       {/* {pages.length && <Pagination />} */}
+      <div className="container mt-3">
+        <h2>Все объявления</h2>
+      </div>
       <div className="list mt-5">
         {products?.map((el) => (
           <BiddingCard

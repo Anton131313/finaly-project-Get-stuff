@@ -15,11 +15,11 @@ export const getAllProductsFromDB = () => (dispatch) => {
     .then((res) => dispatch(allProducts(res.data)));
 };
 
-// export const getAllProductsFromDB = () => (dispatch) => {
-//   axios.get(`${host}/myProducts`)
-//     // .then((response) => console.log(3333, response.data));
-//     .then((res) => dispatch(myProducts(res.data)));
-// };
+export const getMyProductsFromDB = () => (dispatch) => {
+  axios.get(`${host}/myProducts`)
+    // .then((response) => console.log(3333, response.data));
+    .then((res) => dispatch(myProducts(res.data)));
+};
 
 export const deleteProductFromDB = (id) => (dispatch) => {
   axios.get('http://localhost:3001/deleteBidding')
