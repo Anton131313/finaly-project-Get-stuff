@@ -44,7 +44,7 @@ app.use(session(sessionConfig));
 app.use(checkSession);
 app.use('/', authRouter);
 app.use('/profile', usersRouter);
-app.use('/addBidding', addBiddingRouter);
+app.use('/addBidding', checkSession, addBiddingRouter);
 app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);
 app.use('/myBidding', myBiddingRouter);
