@@ -7,7 +7,7 @@ function MainPage() {
     <div className="content">
       <center>
         <CarouselPage />
-        {/* <BiddingList /> */}
+        <BiddingList />
       </center>
     </div>
   );
