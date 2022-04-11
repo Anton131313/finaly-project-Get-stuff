@@ -57,6 +57,7 @@ function BiddingForm() {
     dispatch(AddProductThunk(formData));
     navigate(`/profile/${user.id}`);
   };
+  
 
   return (
     <div className="content">

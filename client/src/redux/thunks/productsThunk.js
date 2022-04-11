@@ -6,17 +6,18 @@ const { REACT_APP_HOST: host } = process.env;
 export const AddProductThunk = (formData) => (dispatch) => {
   console.log(111, formData);
   axios.post(`${host}/addBidding`, formData)
-    .then((res) => dispatch(addProduct(res.data)));
+  .then((res) => console.log(88888888, res.data));
+  // .then((res) => dispatch(addProduct(res.data)));
 };
 
 export const getAllProductsFromDB = () => (dispatch) => {
   axios.get(`${host}/allProducts`)
-    // .then((response) => console.log(3333, response.data));
-    .then((res) => dispatch(allProducts(res.data)));
+    .then((response) => console.log(3333, response.data));
+  // .then((res) => dispatch(allProducts(res.data)));
 };
 
 export const deleteProductFromDB = (id) => (dispatch) => {
-  axios.get('http://localhost:3001/deleteBidding')
+  axios.delete(`${host}/addBidding/${id}`)
     // .then((response) => console.log(response.data));
     .then((res) => dispatch(deleteProduct(id)));
 };
