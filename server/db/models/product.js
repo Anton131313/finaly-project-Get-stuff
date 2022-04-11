@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       category_id: DataTypes.INTEGER,
       condition_id: DataTypes.INTEGER,
       location: DataTypes.STRING,
+      img: DataTypes.TEXT,
     },
     {
       sequelize,
