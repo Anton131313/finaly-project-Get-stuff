@@ -41,8 +41,6 @@ module.exports = {
   addBidding,
 };
 
-
-
 /*
   cookie: {
     path: '/',

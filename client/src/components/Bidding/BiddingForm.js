@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import moment from 'moment';
 import { AddProductThunk } from '../../redux/thunks/productsThunk';
 
 function BiddingForm() {
   const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY HH-mm'));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector(store=> store.user);
+  console.log(user)
   // const [photo, setPhoto] = useState([]);
   const [inputs, setInputs] = useState({
     title: '',
@@ -71,6 +75,7 @@ function BiddingForm() {
     // console.log('form data', Object.fromEntries(formData));
     console.log('-------------', formData);
     dispatch(AddProductThunk(formData));
+    // navigate(`/profile/${user.id}`);
   };
 
   //   try {
@@ -176,7 +181,7 @@ function BiddingForm() {
                     />
                   </div>
                   <div className="col-md-12">
-                    <button type="submit" className="btn btn-secondary float-end">Подтвердить</button>
+                    <button type="submit" className="btn btn-secondary float-end" data-toggle="modal" data-target="#exampleModal">Подтвердить</button>
                   </div>
                 </div>
               </form>

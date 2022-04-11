@@ -13,7 +13,10 @@ function BiddingList() {
   return (
     <div className="container">
       {/* {pages.length && <Pagination />} */}
-      {/* <div className="list mt-5">
+      <div className="container mt-3">
+        <h2>Все объявления</h2>
+      </div>
+      <div className="list mt-5">
         {products?.map((el) => (
           <BiddingCard
             key={el.id}
@@ -26,7 +29,7 @@ function BiddingList() {
             location={el.location}
           />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }

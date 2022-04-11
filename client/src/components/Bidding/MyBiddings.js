@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import BiddingCard from './BiddingCard';
 
 function MyBiddings() {
   const products = useSelector((store) => store.products);
