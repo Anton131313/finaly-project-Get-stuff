@@ -23,5 +23,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/button-has-type': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'react/prop-types': 'off',
   },
 };

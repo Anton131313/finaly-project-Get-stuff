@@ -1,5 +1,4 @@
 const { Bidding, Product, Photo } = require('../../db/models');
-
 const addBidding = async (req, res) => {
   console.log(`<=========${req.session}===========>`);
   // const user_id = req.session.user.id; // временный хардкод
