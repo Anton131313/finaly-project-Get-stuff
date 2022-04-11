@@ -8,6 +8,7 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import SignUp from './components/Auth/SignUp';
 import BiddingForm from './components/Bidding/BiddingForm';
 import LogOut from './components/Auth/LogOut';
+import AuctionCard from './components/Auction/AuctionCard';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
+        <Route path="/AuctionCard" element={<AuctionCard />} />
       </Routes>
       <Footer />
     </>
