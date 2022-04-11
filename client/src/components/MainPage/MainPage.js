@@ -1,13 +1,11 @@
 import React from 'react';
 import CarouselPage from './CarouselPage';
-import BiddingList from '../Bidding/BiddingList';
-import Banner from './Banner';
+import BiddingList from '../Bidding/BiddingList';;
 
 function MainPage() {
   return (
     <div className="content">
       <center>
-        <Banner />
         <CarouselPage />
         {/* <BiddingList /> */}
       </center>

@@ -94,7 +94,7 @@ function BiddingForm() {
           <div className="col-md-6 offset-md-3">
             <div className="signup-form">
               <form onSubmit={addItemToDB} action="" className="mt-5 border p-4 bg-light shadow" encType="multipart/form">
-                <h4 className="mb-5 text-secondary">Разместить объявление</h4>
+                <h4 className="mb-5 text-dark">Разместить объявление</h4>
                 <div className="row">
                   <div className="mb-3 col-md-12">
                     <select name="category_id" value={inputs.category_id} onChange={inputHandler} className="form-select" aria-label="Default select example">
@@ -176,7 +176,7 @@ function BiddingForm() {
                     />
                   </div>
                   <div className="col-md-12">
-                    <button type="submit" className="btn btn-primary float-end">Подтвердить</button>
+                    <button type="submit" className="btn btn-secondary float-end">Подтвердить</button>
                   </div>
                 </div>
               </form>

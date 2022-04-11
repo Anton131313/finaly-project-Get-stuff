@@ -15,7 +15,7 @@ const editUser = async (req, res) => {
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
   if (updatedFields.length) {
     updatedFields = Object.fromEntries(updatedFields);
-    updatedFields.photo = req.file.originalname;
+    if (req.file) updatedFields.photo = req.file.originalname;
     try {
       const [, updatedUser] = await User.update(updatedFields, {
         where: { id: req.session.user.id },

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { SET_USER, DELETE_USER } from '../types/userTypes';
 import * as config from '../../config/config';
 
@@ -67,24 +68,23 @@ export const checkAuth = () => async (dispatch) => {
   }
 };
 
-export const editUser = (dataFromUser) => async (dispatch) => {
-  // const {
-  //   user: { id: userId },
-  // } = getState();
-  console.log('JJJJ', dataFromUser);
-  // const response = await fetch(config.editUser(userId), {
-  //   method: 'PATCH',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   credentials: 'include',
-  //   body: JSON.stringify(user),
-  // });
-  // if (response.status === 200) {
-  //   const userData = await response.json();
-  dispatch(setUser(dataFromUser));
-  // navigate(`/users/${dataFromUser.id}`);
-  // } else {
-  //   navigate.replace('/');
-  // }
+export const getUserData = (id) => async (dispatch) => {
+  axios.get(`${config.getUser(id.id)}`)
+    .then((response) => dispatch(setUser(response.data)));
+};
+
+export const editUser = (inputs, id) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append('file', inputs.file);
+  formData.append('name', inputs.name);
+  formData.append('email', inputs.email);
+  formData.append('phone', inputs.phone);
+  await fetch(`${config.editUser(id.id)}`, {
+    method: 'PATCH',
+    credentials: 'include',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => dispatch(setUser(data)));
+  // if (response.status === 200) { await dispatch(editUser(response.json())); }
 };
