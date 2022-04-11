@@ -9,3 +9,10 @@
   font-size: 20px;
   background-color: grey;
 }
+
+.formochka {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
