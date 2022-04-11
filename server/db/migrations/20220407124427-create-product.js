@@ -44,6 +44,10 @@ module.exports = {
       location: {
         type: Sequelize.STRING,
       },
+      img: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

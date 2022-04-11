@@ -5,18 +5,15 @@ const {
 const allProducts = async (req, res) => {
   try {
     const products = await Product.findAll({
-      include: [{
-        model: Photo,
-        attributes: ['photo', 'id'],
-      },
-      {
-        model: Category,
-        attributes: ['nameCategory'],
-      },
-      {
-        model: Condition,
-        attributes: ['nameCondition'],
-      }],
+      include: [
+        {
+          model: Category,
+          attributes: ['nameCategory'],
+        },
+        {
+          model: Condition,
+          attributes: ['nameCondition'],
+        }],
       raw: true,
     }).catch((e) => e);
     if (products.length === 0) {

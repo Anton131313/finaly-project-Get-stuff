@@ -13,27 +13,27 @@ module.exports = {
       'Conditions',
       [
         {
-          nameCondition: 'ИДЕАЛЬНОЕ',
+          nameCondition: 'идеальное',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCondition: 'УДОВЛЕТВОРИ́ТЕЛЬНОЕ',
+          nameCondition: 'удовлетворительное',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCondition: 'СРЕДНЕЕ',
+          nameCondition: 'среднее',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCondition: 'ТРЕБУЕТ РЕМОНТА',
+          nameCondition: 'требует ремонта',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          nameCondition: 'НЕ ГОДИТСЯ ДЛЯ ИСПОЛЬЗОВАНИЯ',
+          nameCondition: 'не годится для использования',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
