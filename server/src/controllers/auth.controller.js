@@ -20,6 +20,7 @@ const signUp = async (req, res) => {
           id: newUser.id,
           name: newUser.name,
         };
+        req.session.user.id = newUser.id;
         return res.json({
           id: newUser.id,
           name: newUser.name,

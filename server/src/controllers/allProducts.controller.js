@@ -1,5 +1,5 @@
 const {
-  Product, Photo, Category, Condition,
+  Product, Bidding, Category, Condition,
 } = require('../../db/models');
 
 const allProducts = async (req, res) => {
@@ -13,6 +13,10 @@ const allProducts = async (req, res) => {
         {
           model: Condition,
           attributes: ['nameCondition'],
+        },
+        {
+          model: Bidding,
+          attributes: ['end_bidding'],
         }],
       raw: true,
     }).catch((e) => e);
