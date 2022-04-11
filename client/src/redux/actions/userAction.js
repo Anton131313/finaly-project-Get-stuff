@@ -75,10 +75,11 @@ export const getUserData = (id) => async (dispatch) => {
 
 export const editUser = (inputs, id) => async (dispatch) => {
   const formData = new FormData();
-  formData.append('file', inputs.file);
+  console.log(inputs);
+  formData.append('file', inputs.file ?? inputs.photo);
   formData.append('name', inputs.name);
   formData.append('email', inputs.email);
-  formData.append('phone', inputs.phone);
+  formData.append('phone', Number(inputs.phone));
   await fetch(`${config.editUser(id.id)}`, {
     method: 'PATCH',
     credentials: 'include',

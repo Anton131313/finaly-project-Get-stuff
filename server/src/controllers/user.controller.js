@@ -15,8 +15,23 @@ const editUser = async (req, res) => {
   let updatedFields = Object.entries(req.body).filter((el) => el[1]);
   if (updatedFields.length) {
     updatedFields = Object.fromEntries(updatedFields);
-    if (req.file) updatedFields.photo = req.file.originalname;
+    // if (req.file) updatedFields.photo = req.file.originalname;
+    updatedFields.photo = req.file ? req.file.originalname : req.body.file;
     try {
+      if (!req.body.phone) {
+        const [, updatedUser] = await User.update(
+          {
+            name: req.body.name, email: req.body.email, photo: req.file.originalname, phone: null,
+          },
+          {
+            where: { id: req.session.user.id },
+            returning: true,
+            plain: true,
+            raw: true,
+          },
+        );
+        return res.json(updatedUser);
+      }
       const [, updatedUser] = await User.update(updatedFields, {
         where: { id: req.session.user.id },
         returning: true,
@@ -25,6 +40,7 @@ const editUser = async (req, res) => {
       });
       return res.json(updatedUser);
     } catch (error) {
+      console.log('==', error);
       return res.sendStatus(500);
     }
   }

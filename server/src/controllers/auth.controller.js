@@ -24,7 +24,7 @@ const signUp = async (req, res) => {
         return res.json({
           id: newUser.id,
           name: newUser.name,
-          email: newUser.name,
+          email: newUser.email,
           phone: newUser.phone,
           photo: newUser.photo,
         });
@@ -50,7 +50,7 @@ const signIn = async (req, res) => {
         return res.json({
           id: currentUser.id,
           name: currentUser.name,
-          email: currentUser.name,
+          email: currentUser.email,
           phone: currentUser.phone,
           photo: currentUser.photo,
         });
