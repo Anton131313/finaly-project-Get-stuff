@@ -4,11 +4,11 @@ import BiddingList from '../Bidding/BiddingList';
 
 function MainPage() {
   return (
-    <div className="content">
+    <div className="container" style={{ height: '100vh' }}>
       <center>
         <CarouselPage />
-        <BiddingList />
       </center>
+      <BiddingList />
     </div>
   );
 }

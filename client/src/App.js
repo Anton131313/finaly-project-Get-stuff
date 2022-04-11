@@ -15,7 +15,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <>
+    <div className="main">
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -28,7 +28,7 @@ function App() {
         <Route path="/bidding/:id" element={<AuctionCard />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
