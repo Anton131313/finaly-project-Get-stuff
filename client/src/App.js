@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import React from 'react';
+import axios from 'axios';
 import Footer from './components/UI/Footer';
 import Header from './components/UI/Header';
 import Login from './components/Auth/Login';
@@ -9,6 +10,8 @@ import SignUp from './components/Auth/SignUp';
 import BiddingForm from './components/Bidding/BiddingForm';
 import LogOut from './components/Auth/LogOut';
 import AuctionCard from './components/Auction/AuctionCard';
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
