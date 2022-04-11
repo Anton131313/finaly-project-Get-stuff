@@ -30,13 +30,14 @@ function ProfileData() {
     e.preventDefault();
     dispatch(editUser(inputs, id));
   };
+  console.log(inputs);
 
   return (
     <form onSubmit={handleSubmit} className={style.formochka}>
       <div className="container col-md-4 mb-3 my-3">
         <div className="card">
           <div className="d-flex flex-column align-items-center text-center my-3">
-            <img src={inputs.photo ? `http://localhost:3001/img/${inputs.photo}` : 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt="profilephoto" className="rounded" width="350" />
+            <img src={inputs.photo ? `http://localhost:3001/img/${userData.photo}` : 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt="profilephoto" className="rounded" width="350" />
             <div className="my-3">
               <h4>
                 {' '}

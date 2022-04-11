@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
       },
       phone: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       photo: {
         type: Sequelize.STRING,

@@ -1,6 +1,6 @@
 import React from 'react';
 import CarouselPage from './CarouselPage';
-import BiddingList from '../Bidding/BiddingList';;
+import BiddingList from '../Bidding/BiddingList';
 
 function MainPage() {
   return (
