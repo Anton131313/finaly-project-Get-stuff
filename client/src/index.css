@@ -15,11 +15,11 @@ code {
 nav {
   padding: 0 1rem;
 }
-/* .content {
+.content {
   background-color: #FFEEDB;
   min-height: calc(100vh - 70px - 63px);
   padding: 1.5rem 0;
-} */
+}
 .user {
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@ nav {
 }
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1rem;
 }
 .card {

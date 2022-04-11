@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { AddProductThunk } from '../../redux/thunks/productsThunk';
 
@@ -8,9 +8,8 @@ function BiddingForm() {
   const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY HH-mm'));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(store=> store.user);
-  console.log(user)
-  // const [photo, setPhoto] = useState([]);
+  const user = useSelector((store) => store.user);
+  // console.log(user);
   const [inputs, setInputs] = useState({
     title: '',
     info: '',
@@ -26,10 +25,6 @@ function BiddingForm() {
     setDate(moment(e.target.value).format('DD-MM-YYYY HH-mm'));
     // setDate(e.target.value);
   };
-  // const photoHandler = (e) => {
-  //   setPhoto([...e.target.file]);
-  //   console.log(photo);
-  // };
 
   const inputHandler = (e) => {
     if (e.target.files) {
@@ -46,20 +41,6 @@ function BiddingForm() {
     }
     // console.log(3333, inputs);
   };
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('title', inputs.title);
-  //   formData.append('file', inputs.file);
-  //   oxios('/upload', 'POST', formData).then((data) => dispatch(addPost(data)));
-  //   setInputs({});
-  // };
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   console.log(inputs);
-  // };
   const addItemToDB = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -73,24 +54,9 @@ function BiddingForm() {
     formData.append('end_bidding', date);
     formData.append('file', inputs.file);
     // console.log('form data', Object.fromEntries(formData));
-    console.log('-------------', formData);
     dispatch(AddProductThunk(formData));
-    // navigate(`/profile/${user.id}`);
+    navigate(`/profile/${user.id}`);
   };
-
-  //   try {
-  //     const response = await fetch('http://localhost:3001/addBiddong', {
-  //       method: 'POST',
-  //       credentials: 'include',
-  //       body: formData,
-  //     });
-  //     const data = await response.json();
-  //     dispatch(ProductsThunk());
-  //     console.log('---response', response);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
 
   return (
     <div className="content">

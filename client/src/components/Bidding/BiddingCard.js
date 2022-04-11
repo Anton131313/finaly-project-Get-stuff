@@ -1,17 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { deleteProductFromDB } from '../../redux/thunks/productsThunk';
 
 const { REACT_APP_HOST: host } = process.env;
 
 function BiddingCard({
-  id, img, title, info, condition, location,
+  id, img, title, info, condition, location, buttonState,
 }) {
-  const dispatch = useDispatch();
-  const deleteHandler = () => {
-    dispatch(deleteProductFromDB(id));
-  };
   console.log(id, img, title, info, condition, location);
   return (
     <div className="card col card-content" style={{ width: '18rem' }}>
@@ -30,16 +24,12 @@ function BiddingCard({
         </span>
       </div>
       <div>
-        <button
-          onClick={() => deleteHandler(id)}
-          type="button"
-          className="btn btn-danger"
-        >
-          Удалить
-        </button>
-        <button type="button" className="btn btn-info">
-          <Link to={`/bidding/${id}`}>Подробности</Link>
-        </button>
+        <Link to={`/bidding/${id}`}><button type="button" className="btn btn-info mx-4">Детали</button></Link>
+        { buttonState ? (
+          <button type="button" className="btn btn-info">
+            <i className="material-icons">delete_outline</i>
+          </button>
+        ) : null}
       </div>
     </div>
   );

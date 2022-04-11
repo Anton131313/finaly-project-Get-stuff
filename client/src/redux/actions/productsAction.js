@@ -14,8 +14,3 @@ export const deleteProduct = (id) => ({
   type: DELETE_PRODUCT,
   payload: id,
 });
-
-export const myProducts = (id) => ({
-  type: DELETE_PRODUCT,
-  payload: id,
-});
