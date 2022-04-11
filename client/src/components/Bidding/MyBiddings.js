@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProductsFromDB } from '../../redux/thunks/productsThunk';
-import BiddingCard from './BiddingCard';
 
-function BiddingList() {
+function MyBiddings() {
   const products = useSelector((store) => store.products);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProductsFromDB());
   }, []);
-  console.log(999999999999, products);
+
   return (
     <div className="container">
       {/* {pages.length && <Pagination />} */}
@@ -30,4 +28,5 @@ function BiddingList() {
     </div>
   );
 }
-export default BiddingList;
+
+export default MyBiddings;

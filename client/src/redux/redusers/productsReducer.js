@@ -1,4 +1,4 @@
-import { ALL_PRODUCTS, ADD_PRODUCT } from '../types/productTypes';
+import { ALL_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT } from '../types/productTypes';
 
 const productsReducer = (state = [], { type, payload } = {}) => {
   switch (type) {
@@ -6,8 +6,8 @@ const productsReducer = (state = [], { type, payload } = {}) => {
       return payload;
     case ADD_PRODUCT:
       return [payload, ...state];
-    // case DELETE_PRODUCT:
-    //   return state.filter((el) => el.id !== payload);
+    case DELETE_PRODUCT:
+      return state.filter((el) => el.id !== payload);
     default:
       return state;
   }

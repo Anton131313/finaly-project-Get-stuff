@@ -9,7 +9,7 @@ function MainPage() {
       <center>
         <Banner />
         <CarouselPage />
-        {/* <BiddingList /> */}
+        <BiddingList />
       </center>
     </div>
   );
