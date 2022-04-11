@@ -28,6 +28,17 @@ const allProducts = async (req, res) => {
     return res.sendStatus(500);
   }
 };
+
+const getProducts = async (req, res) => {
+  const { word } = req.params;
+  try {
+    const data = await Product.findAll({ where: { title: word } });
+    return res.json({ data });
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 module.exports = {
-  allProducts,
+  allProducts, getProducts,
 };

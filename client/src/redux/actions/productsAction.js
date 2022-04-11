@@ -1,4 +1,6 @@
-import { ALL_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT } from '../types/productTypes';
+import {
+  ALL_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT, FIND_CARDS, FIND_CARDS_SAGA,
+} from '../types/productTypes';
 
 export const allProducts = (products) => ({
   type: ALL_PRODUCTS,
@@ -18,4 +20,14 @@ export const deleteProduct = (id) => ({
 export const myProducts = (id) => ({
   type: DELETE_PRODUCT,
   payload: id,
+});
+
+export const findProducts = (products) => ({
+  type: FIND_CARDS,
+  payload: products,
+});
+
+export const findProductsSaga = (input) => ({
+  type: FIND_CARDS_SAGA,
+  payload: input,
 });

@@ -9,7 +9,7 @@ function BiddingList() {
   useEffect(() => {
     dispatch(getAllProductsFromDB());
   }, []);
-  console.log(999999999999, products);
+  // console.log(999999999999, products);
   return (
     <div className="container">
       {/* {pages.length && <Pagination />} */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { AddProductThunk } from '../../redux/thunks/productsThunk';
 
@@ -8,8 +8,8 @@ function BiddingForm() {
   const [date, setDate] = useState(moment(new Date()).format('DD-MM-YYYY HH-mm'));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(store=> store.user);
-  console.log(user)
+  const user = useSelector((store) => store.user);
+  console.log(user);
   // const [photo, setPhoto] = useState([]);
   const [inputs, setInputs] = useState({
     title: '',
@@ -75,7 +75,7 @@ function BiddingForm() {
     // console.log('form data', Object.fromEntries(formData));
     console.log('-------------', formData);
     dispatch(AddProductThunk(formData));
-    // navigate(`/profile/${user.id}`);
+    navigate(`/profile/${user.id}`);
   };
 
   //   try {

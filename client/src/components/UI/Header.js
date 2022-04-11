@@ -1,10 +1,28 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from '../MainPage/MainPage.module.css';
+import { findProductsSaga } from '../../redux/actions/productsAction';
 
 function Header() {
   const user = useSelector((state) => state.user);
+
+  const [input, setInput] = useState('');
+  const [search, setSearch] = useState('');
+
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(findProductsSaga(input));
+  };
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    setInput(search);
+  }, [search]);
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${style.headercolor}`}>
@@ -35,8 +53,8 @@ function Header() {
               </>
             )}
           </ul>
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" />
+          <form className="d-flex" onSubmit={handleSubmit}>
+            <input className="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" value={input} onChange={handleChange} />
             <button className="btn btn-outline-light" type="submit">Поиск</button>
           </form>
         </div>
