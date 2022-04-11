@@ -12,7 +12,7 @@ function Login() {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-  const from = { pathname: '/' };
+  const from = { pathname: `/profile/` };
 
   const changeHandler = (e) => {
     setUserSignIn((prev) => ({ ...prev, [e.target.name]: e.target.value }));
