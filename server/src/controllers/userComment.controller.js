@@ -1,9 +1,7 @@
 const { Comment_User_Product } = require('../../db/models/comment_user_product');
 
-// const user_id = req.session.user.id;
-
 const addComment = async (req, res) => {
-  const user_id = 4;
+  const user_id = req.session.user.id;
   const { product_id, text } = req.body;
   try {
     const newComment = await Comment_User_Product.create({

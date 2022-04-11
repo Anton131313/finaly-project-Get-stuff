@@ -1,8 +1,8 @@
 const { Product, Bidding, User } = require('../../db/models');
 
 const myBidding = async (req, res) => {
-  const user_id = 4;
-  // const user_id = req.session.user.id;
+  // const user_id = 4;
+  const user_id = req.session.user.id;
   try {
     const Useridding = await Product.findAll(
       {
