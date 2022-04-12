@@ -22,12 +22,13 @@ export const getCommentsData = (id) => async (dispatch) => {
     .then((response) => dispatch(setComments(response.data)));
 };
 
-export const createComment = (comments) => ({
+export const createComment = (comment) => ({
   type: CREATE_COMMENTS,
-  payload: comments,
+  payload: comment,
 });
 
 export const createCommentData = (id, payload) => async (dispatch) => {
-  axios.post(`${config.getComments(id.id)}`)
-    .then((response) => dispatch(createComment(response.data, payload)));
+  console.log(payload, '<<<<<<<<<<');
+  axios.post(`${config.addComments(id.id)}`, payload)
+    .then((response) => dispatch(createComment(response.data)));
 };

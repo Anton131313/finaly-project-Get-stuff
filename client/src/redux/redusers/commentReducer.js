@@ -5,7 +5,7 @@ const commentReducer = (state = null, { type, payload } = {}) => {
     case SET_COMMENTS:
       return payload;
     case CREATE_COMMENTS:
-      return payload;
+      return [...state, payload];
     default:
       return state;
   }

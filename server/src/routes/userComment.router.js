@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const userCommentController = require('../controllers/userComment.controller');
-const checkAuth = require('../middlewares/checkAuth');
+//const checkAuth = require('../middlewares/checkAuth');
 
 const userCommentRouter = Router();
 

@@ -1,10 +1,11 @@
 const { Comment_User_Product, User } = require('../../db/models');
 
 const addComment = async (req, res) => {
-  // const user_id = req.session.id;
-  const user_id = 1;
+  const user_id = req.session.user.id;
+  //const user_id = 1;
   const product_id = Number(req.params.id);
   const { text } = req.body;
+  console.log('****************', req.body, product_id, user_id);
 
   const newComment = await Comment_User_Product.create({
     user_id,
@@ -17,14 +18,15 @@ const addComment = async (req, res) => {
     },
   });
   const userComment = {
-    nameUser: CurUser.name,
-    textComment: newComment.text,
+    name: CurUser.name,
+    text: newComment.text,
     createdAt: newComment.createdAt,
   };
   return res.json(userComment);
 };
 
 const getComment = async (req, res) => {
+  console.log('>>>>>>>>>>>>>>>');
   const product_id = Number(req.params.id);
   try {
     const allComment = await Comment_User_Product.findAll({
@@ -36,7 +38,7 @@ const getComment = async (req, res) => {
       res.sendStatus(404);
     }
     //  ниже небольшой хард код  =)
-    for (let i = 0; i < allComment.length; i++) {
+    for (let i = 0; i < allComment.length; i += 1) {
       const currUser = await User.findOne(
         {
           where: { id: allComment[i].user_id },
