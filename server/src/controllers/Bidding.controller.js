@@ -31,6 +31,8 @@ const addBidding = async (req, res) => {
     end_bidding,
   });
 
+  console.log(newProduct, newBidding);
+  // res.json(newProduct, newBidding);
   // const newPhoto = await Photo.create({
   //   product_id: newProduct.id,
   //   photo: req.file.originalname,
@@ -41,7 +43,7 @@ const deleteBidding = async (req, res) => {
   const user_id = req.session.user.id;
   const product_id = req.params.id;
 
-  const currProduct = await Product.findone({
+  const currProduct = await Product.findOne({
     where:
      {
        user_id,
