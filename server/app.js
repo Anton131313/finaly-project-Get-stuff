@@ -44,7 +44,7 @@ app.use(session(sessionConfig));
 app.use(checkSession);
 app.use('/', authRouter);
 app.use('/profile', usersRouter);
-app.use('/bidding', biddingRouter); // изменено с /addBidding на /Bidding
+app.use('/bidding', biddingRouter);
 app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);
 app.use('/addComment', userCommentRouter);
