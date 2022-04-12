@@ -19,5 +19,5 @@ export const getAllProductsFromDB = () => (dispatch) => {
 export const deleteProductFromDB = (id) => (dispatch) => {
   axios.delete(`${host}/bidding/${id}`)
     // .then((response) => console.log(response.data));
-    .then((res) => dispatch(deleteProduct(id)));
+    .then(() => dispatch(deleteProduct(id)));
 };
