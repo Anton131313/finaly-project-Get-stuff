@@ -65,3 +65,15 @@ nav {
 .card-content {
   flex-grow: 1;
 }
+.biddings-container {
+  position: relative;
+	transition: transform 0.2s;
+}
+.biddings-container:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.biddings-container:hover .overlay {
+	opacity: 1;
+}

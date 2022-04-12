@@ -10,14 +10,13 @@ function MyBiddings() {
   useEffect(() => {
     setMyProducts(products.filter((el) => el.user_id === user.id));
     setbuttonState(true);
-  }, []);
-  console.log(myProducts, user, products);
-
+  }, [products]);
+  console.log(user);
   return (
     <div className="container">
       <div><h3>Мои объявления</h3></div>
       {/* {pages.length && <Pagination />} */}
-      <div className="list mt-5">
+      <div className="list mt-5 mb-5">
         {myProducts?.map((el) => (
           <BiddingCard
             key={el.id}

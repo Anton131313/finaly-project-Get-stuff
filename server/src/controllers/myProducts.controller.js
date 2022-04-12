@@ -3,7 +3,7 @@ const {
 } = require('../../db/models');
 
 const myProducts = async (req, res) => {
-  const user_id = 1;
+  const user_id = req.session.user.id;
   // const user_id = req.session.user.id;
   try {
     const UserProducts = await Product.findAll({
