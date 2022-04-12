@@ -17,11 +17,6 @@ export const deleteProduct = (id) => ({
   payload: id,
 });
 
-export const myProducts = (id) => ({
-  type: DELETE_PRODUCT,
-  payload: id,
-});
-
 export const findProducts = (products) => ({
   type: FIND_CARDS,
   payload: products,

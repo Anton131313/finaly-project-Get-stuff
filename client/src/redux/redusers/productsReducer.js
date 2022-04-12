@@ -1,6 +1,9 @@
-import { ALL_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT } from '../types/productTypes';
+import {
+  ALL_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT,
+} from '../types/productTypes';
 
 const productsReducer = (state = [], { type, payload } = {}) => {
+  console.log(payload);
   switch (type) {
     case ALL_PRODUCTS:
       return payload;
