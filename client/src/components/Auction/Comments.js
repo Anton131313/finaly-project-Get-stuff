@@ -10,10 +10,11 @@ function Comments() {
   const user = useSelector((store) => store.user);
   const commentsData = useSelector((store) => store.comments);
   const [input, setInputs] = useState('');
-  const [comment, setComent] = useState([...commentsData]);
+  const [comment, setComent] = useState(false);
 
   useEffect(() => {
     dispatch(getCommentsData(id));
+    console.log(comment, '****');
   }, [comment]);
 
   const handleChange = (e) => {
@@ -24,12 +25,10 @@ function Comments() {
     e.preventDefault();
     const payload = { text: input };
     dispatch(createCommentData(id, payload));
-    setComent(commentsData);
+    setComent((prev) => !prev);
     setInputs('');
   };
-
-  console.log(commentsData);
-
+  // console.log(comment, '&&&');
   return (
     <div className="col md-3 mb-4">
       {user
@@ -44,14 +43,16 @@ function Comments() {
           </div>
         ) : (<p />)}
       <div>
-        {commentsData.map((el) => (
-          <Comment
-            key={el.id}
-            name={el.name}
-            data={el.updatedAt}
-            text={el.text}
-          />
-        ))}
+        {commentsData
+          .filter((el) => Number(el.product_id) === Number(id.id))
+          .map((el) => (
+            <Comment
+              key={el.id}
+              name={el.name}
+              data={el.updatedAt}
+              text={el.text}
+            />
+          ))}
       </div>
     </div>
   );

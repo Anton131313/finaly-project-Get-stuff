@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getAuctionData } from '../../redux/actions/auctionAction';
@@ -10,10 +10,26 @@ function AuctionCard() {
   const id = useParams();
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
+  const [input, setInputs] = useState({ ...auction });
+
   useEffect(() => {
     dispatch(getAuctionData(id));
   }, []);
+
   console.log('=============>', auction);
+
+  const handleChange = (e) => {
+    setInputs(e.target.value);
+  };
+
+  const handleCreate = () => {
+    // e.preventDefault();
+    // const payload = { text: input };
+    // dispatch(createCommentData(id, payload));
+    // setComent(commentsData);
+    // setInputs('');
+  };
+
   return (
     <>
       <div className="col md-3 mb-4">
@@ -57,13 +73,37 @@ function AuctionCard() {
               {' '}
               {auction.location}
             </span>
+          </div>
+          <div />
+          <div>
             <div>
               Окончание торгов через:
               {' '}
               {auction['Bidding.end_bidding']}
             </div>
+            <div>
+              Цена:
+              {' '}
+              {(+auction['Bidding.price'] === 0)
+                ? 'Приезжай забирай'
+                : auction['Bidding.price']}
+            </div>
+            <div>
+              Ставка:
+              {' '}
+              <input
+                onChange={handleChange}
+                value={(+auction['Bidding.price'] === 0)
+                  ? 'Приеду заберу'
+                  : input['Bidding.price_step']}
+                type="text"
+                name="text"
+                className="form-control"
+                required
+              />
+              <button type="submit" className="btn btn-warning" onClick={handleCreate}>Сделать ставку</button>
+            </div>
           </div>
-          <div />
         </div>
       </div>
       <Comments />

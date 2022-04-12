@@ -22,9 +22,9 @@ export const getCommentsData = (id) => async (dispatch) => {
     .then((response) => dispatch(setComments(response.data)));
 };
 
-export const createComment = (comment) => ({
+export const createComment = (input) => ({
   type: CREATE_COMMENTS,
-  payload: comment,
+  payload: input,
 });
 
 export const createCommentData = (id, payload) => async (dispatch) => {
