@@ -9,3 +9,4 @@ export const getUser = (id) => `${host}/profile/${id}`;
 export const editUser = (id) => `${host}/profile/${id}`;
 
 export const getAuction = (id) => `${host}/bidding/${id}`;
+export const getComments = (id) => `${host}/bidding/${id}`;

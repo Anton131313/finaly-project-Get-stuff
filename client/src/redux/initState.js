@@ -3,6 +3,7 @@ const initState = {
   products: [],
   auction: [],
   search: '',
+  comments: [],
 };
 
 const getInitState = () => {
