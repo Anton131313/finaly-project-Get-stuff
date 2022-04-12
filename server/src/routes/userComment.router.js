@@ -4,7 +4,7 @@ const checkAuth = require('../middlewares/checkAuth');
 
 const userCommentRouter = Router();
 
-userCommentRouter.post('/', checkAuth, userCommentController.addComment);
-userCommentRouter.get('/', userCommentController.getComment);
+userCommentRouter.post('/:id', userCommentController.addComment);
+userCommentRouter.get('/:id', userCommentController.getComment);
 
 module.exports = userCommentRouter;
