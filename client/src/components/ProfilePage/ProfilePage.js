@@ -11,7 +11,7 @@ function ProfilePage() {
 
   if (+id.id === dataUser.id) {
     return (
-      <div className="row content my-3">
+      <div className="container">
         <center>
           <h4>
             Привет,

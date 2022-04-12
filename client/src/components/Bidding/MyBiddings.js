@@ -13,24 +13,29 @@ function MyBiddings() {
   }, [products]);
   console.log(user);
   return (
-    <div className="container">
-      <div><h3>Мои объявления</h3></div>
-      <div className="list mt-5 mb-5">
-        {myProducts?.map((el) => (
-          <BiddingCard
-            key={el.id}
-            id={el.id}
-            img={el.img}
-            title={el.title}
-            info={el.info}
-            condition={el['Condition.nameCondition']}
-            category={el['Category.nameCategory']}
-            location={el.location}
-            buttonState={buttonState}
-          />
-        ))}
+    <div className="container mt-3">
+      <div className="row mb-5">
+        <div className="col-12 mb-3">
+          <div><h3 className="text-left">Мои объявления</h3></div>
+          <div className="list mt-5 mb-5">
+            {myProducts?.map((el) => (
+              <BiddingCard
+                key={el.id}
+                id={el.id}
+                img={el.img}
+                title={el.title}
+                info={el.info}
+                condition={el['Condition.nameCondition']}
+                category={el['Category.nameCategory']}
+                location={el.location}
+                buttonState={buttonState}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
+
   );
 }
 

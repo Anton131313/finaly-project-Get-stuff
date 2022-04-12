@@ -60,8 +60,8 @@ function BiddingForm() {
 
   return (
     <div className="content">
-      <div className="container">
-        <div className="row">
+      <div className="container mb-5">
+        <div className="row mb-5">
           <div className="col-md-6 offset-md-3">
             <div className="signup-form">
               <form onSubmit={addItemToDB} action="" className="mt-5 border p-4 bg-light shadow" encType="multipart/form">
