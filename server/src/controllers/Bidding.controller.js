@@ -1,4 +1,4 @@
-const { Bidding, Product, Photo } = require('../../db/models');
+const { Bidding, Product, User } = require('../../db/models');
 
 const addBidding = async (req, res) => {
   const user_id = req.session.user.id;
@@ -31,7 +31,7 @@ const addBidding = async (req, res) => {
     price_step,
     end_bidding,
   });
-  
+
   res.json(newProduct);
   // const newPhoto = await Photo.create({
   //   product_id: newProduct.id,
@@ -58,7 +58,37 @@ const deleteBidding = async (req, res) => {
   }
 };
 
+const myBidding = async (req, res) => {
+  const user_id = 1;
+  // const user_id = req.session.user.id;
+  try {
+    const Useridding = await Product.findAll(
+      {
+        include:
+      [{
+        model: Bidding,
+        required: true,
+        include:
+            [{
+              model: User,
+              where: { id: user_id },
+            }],
+      }],
+        raw: true,
+      },
+    );
+    // console.log(Useridding);
+    if (Useridding.length === 0) {
+      return res.sendStatus(404);
+    }
+    res.json(Useridding);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 module.exports = {
   addBidding,
   deleteBidding,
+  myBidding,
 };
