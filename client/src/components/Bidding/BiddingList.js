@@ -36,7 +36,7 @@ function BiddingList() {
             <button className="btn btn-outline-dark me-2" onClick={() => filterProduct('Товары для детей')}>Товары для детей</button>
           </div>
         </div>
-        <div className="list">
+        <div className="list mb-5">
           {/* {pages.length && <Pagination />} */}
           {filter?.map((el) => (
             <BiddingCard
