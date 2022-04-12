@@ -31,6 +31,7 @@ const addBidding = async (req, res) => {
     price_step,
     end_bidding,
   });
+  
   res.json(newProduct);
   // const newPhoto = await Photo.create({
   //   product_id: newProduct.id,
