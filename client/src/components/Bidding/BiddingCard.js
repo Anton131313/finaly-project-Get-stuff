@@ -16,7 +16,7 @@ function BiddingCard({
   console.log(id, img, title, info, condition, location);
   return (
     <div className="col md-3 mb-4">
-      <div className="card h-100 text-center p-4 col card-content">
+      <div className="d-flex card h-100 text-center p-4 col card-content">
         <img
           src={`${host}/img/${img}`}
           className="card-img-top"
