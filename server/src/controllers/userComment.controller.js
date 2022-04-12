@@ -2,10 +2,10 @@ const { Comment_User_Product, User } = require('../../db/models');
 
 const addComment = async (req, res) => {
   const user_id = req.session.user.id;
-  //const user_id = 1;
+  // const user_id = 1;
   const product_id = Number(req.params.id);
   const { text } = req.body;
-  console.log('****************', req.body, product_id, user_id);
+  // console.log('****************', req.body, product_id, user_id);
 
   const newComment = await Comment_User_Product.create({
     user_id,
@@ -26,7 +26,7 @@ const addComment = async (req, res) => {
 };
 
 const getComment = async (req, res) => {
-  console.log('>>>>>>>>>>>>>>>');
+  // console.log('<==const getComment = async (req, res)==>');
   const product_id = Number(req.params.id);
   try {
     const allComment = await Comment_User_Product.findAll({
@@ -35,7 +35,8 @@ const getComment = async (req, res) => {
 
     });
     if (allComment.length === 0) {
-      res.sendStatus(404);
+      // console.log('<==allComment.length === 0==>');
+      return res.sendStatus(404);
     }
     //  ниже небольшой хард код  =)
     for (let i = 0; i < allComment.length; i += 1) {
