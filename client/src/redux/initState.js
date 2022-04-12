@@ -1,6 +1,7 @@
 const initState = {
   user: null,
   products: [],
+  auction: [],
 };
 
 const getInitState = () => {

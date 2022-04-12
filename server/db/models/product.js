@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'Comment_User_Products',
         foreignKey: 'product_id',
       });
+      this.belongsTo(User, { foreignKey: 'user_id' });
       this.hasOne(Bidding, { foreignKey: 'product_id' });
     }
   }

@@ -1,14 +1,23 @@
 const {
-  Product, Category, Condition, Bidding,
+  Product,
+  Category,
+  Condition,
+  Bidding,
+  User,
 } = require('../../db/models');
 
-const myProducts = async (req, res) => {
-  const user_id = 1;
+const getAuction = async (req, res) => {
   // const user_id = req.session.user.id;
+  // console.log(req.params, '======', user_id );
+  const { id } = req.params;
   try {
-    const UserProducts = await Product.findAll({
-      where: { user_id },
+    const auctionProduct = await Product.findOne({
+      where: { id },
       include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
         {
           model: Category,
           attributes: ['nameCategory'],
@@ -19,19 +28,19 @@ const myProducts = async (req, res) => {
         },
         {
           model: Bidding,
-          attributes: ['end_bidding'],
+          attributes: ['end_bidding', 'price', 'price_step'],
         }],
       raw: true,
     });
-    if (UserProducts.length === 0) {
+    if (auctionProduct.length === 0) {
       return res.sendStatus(404);
     }
-    res.json(UserProducts);
+    res.json(auctionProduct);
   } catch (error) {
     return res.sendStatus(500);
   }
 };
 
 module.exports = {
-  myProducts,
+  getAuction,
 };
