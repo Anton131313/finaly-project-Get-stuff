@@ -12,7 +12,7 @@ function BiddingCard({
   const deleteHandler = () => {
     dispatch(deleteProductFromDB(id));
   };
-  console.log(id, img, title, info, condition, location);
+  // console.log(id, img, title, info, condition, location);
   return (
     <div className="card col card-content" style={{ width: '18rem' }}>
       <img
