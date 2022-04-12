@@ -11,6 +11,7 @@ function MyBiddings() {
     setMyProducts(products.filter((el) => el.user_id === user.id));
     setbuttonState(true);
   }, []);
+  console.log(myProducts, user, products);
 
   return (
     <div className="container">

@@ -3,6 +3,7 @@ import {
 } from '../types/productTypes';
 
 const productsReducer = (state = [], { type, payload } = {}) => {
+  console.log(payload);
   switch (type) {
     case ALL_PRODUCTS:
       return payload;

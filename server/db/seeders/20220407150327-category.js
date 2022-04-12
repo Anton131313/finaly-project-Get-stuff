@@ -28,7 +28,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          nameCategory: 'Текхника',
+          nameCategory: 'Техника',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
