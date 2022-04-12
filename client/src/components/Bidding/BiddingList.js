@@ -5,6 +5,7 @@ import BiddingCard from './BiddingCard';
 
 function BiddingList() {
   const products = useSelector((store) => store.products);
+
   const [buttonState, setbuttonState] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,9 +30,9 @@ function BiddingList() {
           </div>
         </div>
       </div>
-      <div className="row justify-content-center">
+      <div className="d-flex list">
         {/* {pages.length && <Pagination />} */}
-        {products?.map((el) => (
+        { products?.map((el) => (
           <BiddingCard
             key={el.id}
             id={el.id}
