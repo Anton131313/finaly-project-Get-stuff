@@ -12,7 +12,6 @@ function BiddingCard({
   const deleteHandler = () => {
     dispatch(deleteProductFromDB(id));
   };
-
   // console.log(id, img, title, info, condition, location);
 
   return (
