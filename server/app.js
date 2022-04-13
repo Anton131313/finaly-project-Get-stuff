@@ -13,6 +13,7 @@ const myProductsRouter = require('./src/routes/myProducts.router'); // Пока�
 const allProductsRouter = require('./src/routes/allProducts.router'); // Показать Все лоты учавствующие в торгах
 const userCommentRouter = require('./src/routes/userComment.router'); // комментарий к продукту
 const auctionRouter = require('./src/routes/auction.router');
+const allUserBidding = require('./src/routes/allUserBidding.router'); // показать все ставки по конкретному продукту
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use('/myProducts', myProductsRouter);
 app.use('/allProducts', allProductsRouter);
 app.use('/addComment', userCommentRouter);
 app.use('/', auctionRouter);
+app.use('/userBidding', allUserBidding);
 
 app.listen(PORT, () => {
   console.log('Сервер запущен, порт:', PORT);
