@@ -30,7 +30,7 @@ function ProfileData() {
     e.preventDefault();
     dispatch(editUser(inputs, id));
   };
-  console.log(inputs);
+  // console.log(inputs);
 
   return (
     <form onSubmit={handleSubmit} className={style.formochka}>

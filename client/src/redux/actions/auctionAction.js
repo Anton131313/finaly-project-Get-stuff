@@ -28,7 +28,17 @@ export const createComment = (input) => ({
 });
 
 export const createCommentData = (id, payload) => async (dispatch) => {
-  console.log(payload, '<<<<<<<<<<');
   axios.post(`${config.addComments(id.id)}`, payload)
     .then((response) => dispatch(createComment(response.data)));
+};
+
+export const createPrice = (data) => ({
+  type: CREATE_COMMENTS,
+  payload: data,
+});
+
+export const createPriceData = (id, payload) => async (dispatch) => {
+  console.log(payload, '<<<<<<<<<<');
+  axios.post(`${config.addPrice(id.id)}`, payload)
+    .then((response) => dispatch(createPrice(response.data)));
 };

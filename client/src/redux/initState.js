@@ -4,6 +4,7 @@ const initState = {
   auction: [],
   search: '',
   comments: [],
+  price: '',
 };
 
 const getInitState = () => {
