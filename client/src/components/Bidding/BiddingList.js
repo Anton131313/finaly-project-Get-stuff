@@ -11,7 +11,7 @@ function BiddingList() {
     dispatch(getAllProductsFromDB());
     setbuttonState(false);
   }, []);
-  console.log(999999999999, products);
+  // console.log(999999999999, products);
   const [filter, setFilter] = useState(products);
   const filterProduct = (category) => {
     const filteredProducts = products.filter((el) => el['Category.nameCategory'] === category);
