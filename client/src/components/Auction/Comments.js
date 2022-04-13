@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import moment from 'moment';
 import { createCommentData, getCommentsData } from '../../redux/actions/auctionAction';
 import Comment from './Comment';
 
@@ -12,9 +13,11 @@ function Comments() {
   const [input, setInputs] = useState('');
   const [comment, setComent] = useState(false);
 
+  // console.log(moment(commentsData.updatedAt).format('DD-MM-YYYY HH-mm'));
+
   useEffect(() => {
     dispatch(getCommentsData(id));
-    console.log(comment, '****');
+    // console.log(comment, '****');
   }, [comment]);
 
   const handleChange = (e) => {
@@ -43,13 +46,13 @@ function Comments() {
           </div>
         ) : (<p />)}
       <div>
-        {commentsData
+        {commentsData && commentsData
           .filter((el) => Number(el.product_id) === Number(id.id))
           .map((el) => (
             <Comment
               key={el.id}
               name={el.name}
-              data={el.updatedAt}
+              data={moment(el.updatedAt).format('DD-MM-YYYY HH-mm')}
               text={el.text}
             />
           ))}

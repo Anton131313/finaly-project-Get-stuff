@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createPriceData, getAuctionData } from '../../redux/actions/auctionAction';
 import Comments from './Comments';
+import CountdownTimer from './CountdownTimer';
 
 const { REACT_APP_HOST: host } = process.env;
 
@@ -10,6 +11,19 @@ function AuctionCard() {
   const id = useParams();
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
+
+  const cardData = auction['Bidding.end_bidding']
+    .split(' ')
+    .map((el) => el.split('-').join(' '))
+    .join(' ')
+    .split(' ');
+  const dateTimeAfterThreeDays = Date.UTC(
+    cardData[2],
+    (Number(cardData[1]) - 1),
+    cardData[0],
+    cardData[3],
+    cardData[4],
+  );
 
   let inputState = '';
   if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; } else { inputState = auction['Bidding.price_step']; }
@@ -39,9 +53,10 @@ function AuctionCard() {
     setInputs(`${auction['Bidding.price']}`);
   };
 
-  console.log('=============>', input);
+  console.log('=============>', auction);
   return (
     <>
+      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
       <div className="col md-3 mb-4">
         <div className="d-flex card h-100 text-center p-4 col card-content">
           <span>

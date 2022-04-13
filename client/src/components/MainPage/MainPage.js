@@ -6,6 +6,7 @@ import Search from '../Search/Search';
 
 function MainPage() {
   const search = useSelector((store) => store.search);
+
   return (
     <>
       {!search.length && (
