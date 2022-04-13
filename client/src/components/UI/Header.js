@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from '../MainPage/MainPage.module.css';
 import { findProductsSaga } from '../../redux/actions/productsAction';
@@ -28,8 +28,6 @@ function Header() {
   // useEffect(() => {
   //   setInput(search);
   // }, [search]);
-
-  console.log(search);
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${style.headercolor}`}>
