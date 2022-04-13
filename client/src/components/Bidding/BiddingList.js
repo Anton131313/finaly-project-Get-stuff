@@ -18,6 +18,7 @@ function BiddingList() {
     console.log('filter', filteredProducts);
     setFilter(filteredProducts);
   };
+  console.log('tut')
 
   return (
     <div className="my-4 py-2">
