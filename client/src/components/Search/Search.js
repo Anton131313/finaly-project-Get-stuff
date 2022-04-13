@@ -14,22 +14,25 @@ function Search() {
   }, []);
 
   return (
-    <div className="d-flex list">
-
-      { search.length ? search.map((el) => (
-        <BiddingCard
-          key={el.id}
-          id={el.id}
-          img={el.img}
-          title={el.title}
-          info={el.info}
-          condition={el['Condition.nameCondition']}
-          category={el['Category.nameCategory']}
-          location={el.location}
-          buttonState={buttonState}
-        />
-      )) : 'Такого товара нет'}
-
+    <div className="container">
+      <div className="p-3">
+        <h5>Результаты поиска</h5>
+      </div>
+      <div className="list">
+        { search.length ? search.map((el) => (
+          <BiddingCard
+            key={el.id}
+            id={el.id}
+            img={el.img}
+            title={el.title}
+            info={el.info}
+            condition={el['Condition.nameCondition']}
+            category={el['Category.nameCategory']}
+            location={el.location}
+            buttonState={buttonState}
+          />
+        )) : 'Такого товара нет'}
+      </div>
     </div>
   );
 }
