@@ -13,7 +13,7 @@ function Comments() {
   const [input, setInputs] = useState('');
   const [comment, setComent] = useState(false);
 
-  // console.log(moment(commentsData.updatedAt).format('DD-MM-YYYY HH-mm'));
+  console.log(moment(commentsData.updatedAt).format('DD-MM-YYYY HH-mm'));
 
   useEffect(() => {
     dispatch(getCommentsData(id));

@@ -8,8 +8,10 @@ const initState = {
 };
 
 const getInitState = () => {
-  // const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
-  // return stateFromLS || initState;
-  return initState;
-}
+  const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+  return stateFromLS || initState;
+};
+
+// const getInitState = () => initState;
+
 export default getInitState;
