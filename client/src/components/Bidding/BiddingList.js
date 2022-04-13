@@ -18,7 +18,7 @@ function BiddingList() {
     console.log('filter', filteredProducts);
     setFilter(filteredProducts);
   };
-  console.log('tut')
+  console.log('tut');
 
   return (
     <div className="my-4 py-2">
@@ -38,7 +38,7 @@ function BiddingList() {
         </div>
         <div className="list mb-5">
           {/* {pages.length && <Pagination />} */}
-          {filter?.map((el) => (
+          {Sfilter?.map((el) => (
             <BiddingCard
               key={el.id}
               id={el.id}
@@ -53,7 +53,6 @@ function BiddingList() {
           ))}
         </div>
       </div>
-
     </div>
   );
 }
