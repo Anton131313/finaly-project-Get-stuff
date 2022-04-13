@@ -158,6 +158,7 @@ function AuctionCard() {
           </div>
         </div>
       </div>
+      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
       <Comments />
     </div>
   );

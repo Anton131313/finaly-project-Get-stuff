@@ -57,7 +57,7 @@ function Comments() {
                 <Comment
                   key={el.id}
                   name={el.name}
-                  data={el.updatedAt}
+                  data={moment(el.updatedAt).format('DD-MM-YYYY HH-mm')}
                   text={el.text}
                 />
               ))}
