@@ -5,7 +5,6 @@ import BiddingCard from './BiddingCard';
 
 function BiddingList() {
   const products = useSelector((store) => store.products);
-
   const [buttonState, setbuttonState] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {

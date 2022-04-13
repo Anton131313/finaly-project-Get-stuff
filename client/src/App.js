@@ -10,6 +10,7 @@ import SignUp from './components/Auth/SignUp';
 import BiddingForm from './components/Bidding/BiddingForm';
 import LogOut from './components/Auth/LogOut';
 import AuctionCard from './components/Auction/AuctionCard';
+import MyBiddings from './components/Bidding/MyBiddings';
 
 axios.defaults.withCredentials = true;
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/addBidding" element={<BiddingForm />} />
         {/* <Route path="/AuctionCard" element={<AuctionCard />} /> */}
         <Route path="/bidding/:id" element={<AuctionCard />} />
+        <Route path="/myProducts" element={<MyBiddings />} />
       </Routes>
       <Footer />
     </div>

@@ -6,7 +6,6 @@ import { getAllProductsFromDB } from '../../redux/thunks/productsThunk';
 function Search() {
   const search = useSelector((store) => store.search);
 
-
   const [buttonState, setbuttonState] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {

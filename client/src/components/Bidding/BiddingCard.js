@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteProductFromDB } from '../../redux/thunks/productsThunk';
+import Modal from '../Modal/Modal';
 
 const { REACT_APP_HOST: host } = process.env;
 
@@ -9,6 +10,7 @@ function BiddingCard({
   id, img, title, condition, location, buttonState,
 }) {
   const dispatch = useDispatch();
+  const [openModal, setOpenModal] = useState(false);
   const deleteHandler = () => {
     dispatch(deleteProductFromDB(id));
   };
@@ -41,9 +43,18 @@ function BiddingCard({
         <div>
           <Link to={`/bidding/${id}`}><button type="button" className="btn btn-outline-primary mx-4">Детали</button></Link>
           { buttonState ? (
-            <button onClick={() => deleteHandler(id)} type="button" className="btn btn-outline-primary">
-              Удалить
-            </button>
+            <>
+              <button onClick={() => { setOpenModal(true); }} type="button" className="btn btn-outline-danger openModalBtn">
+                Удалить
+              </button>
+              {openModal && (
+              <Modal
+                setOpenModal={setOpenModal}
+                deleteHandler={deleteHandler}
+                id={id}
+              />
+              )}
+            </>
           ) : null}
         </div>
       </div>
