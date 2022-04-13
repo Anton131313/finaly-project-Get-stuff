@@ -11,14 +11,13 @@ function AuctionCard() {
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
 
-  const inputState = () => {
-    if (+auction['Bidding.price'] === 0) return 'заберет бесплатно';
-    return auction['Bidding.price_step'];
-  };
+  let inputState = '';
+  if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; } else { inputState = auction['Bidding.price_step']; }
+
   const [input, setInputs] = useState(inputState);
 
   useEffect(() => {
-    setInputs(`${auction['Bidding.price']}`);
+    // setInputs(`${auction['Bidding.price']}`);
     dispatch(getAuctionData(id));
   }, [input]);
 
@@ -40,7 +39,7 @@ function AuctionCard() {
     setInputs(`${auction['Bidding.price']}`);
   };
 
-  console.log('=============>', auction);
+  console.log('=============>', input);
   return (
     <>
       <div className="col md-3 mb-4">
@@ -104,7 +103,7 @@ function AuctionCard() {
                 Ставка:
                 {' '}
                 <input
-                  value={auction['Bidding.price_step']}
+                  value={input}
                   type="text"
                   name="text"
                   className="form-control"
