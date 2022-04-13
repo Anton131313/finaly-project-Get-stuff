@@ -12,7 +12,6 @@ const getProductsFromServer = async (word) => (await axios.get(`${host}/allProdu
 function* productWorker(action) {
   // console.log(action);
   try {
-    
     const products = yield call(getProductsFromServer, action.payload);
     // console.log(products);
     yield put(findProducts(products));
@@ -21,7 +20,6 @@ function* productWorker(action) {
     yield put(findProducts([]));
   }
 }
-
 
 export default function* productsWatcher() {
   yield takeEvery(FIND_CARDS_SAGA, productWorker);
