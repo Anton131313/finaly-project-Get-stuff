@@ -41,64 +41,83 @@ function AuctionCard() {
 
   console.log('=============>', input);
   return (
-    <>
-      <div className="col md-3 mb-4">
-        <div className="d-flex card h-100 text-center p-4 col card-content">
-          <span>
-            Владелец товара:
-            {' '}
-            {auction['User.name']}
-          </span>
-          <img
-            src={`${host}/img/${auction.img}`}
-            className="card-img-top"
-            alt={auction.title}
-            height="250px"
-          />
-          <div className="card-body">
-            <h5 className="card-title mb-0">
-              Товар:
-              {' '}
-              {auction.title}
-            </h5>
-            <div>
-              Описание товара:
-              {' '}
-              {auction.info}
-            </div>
-            <span>
-              Категория:
-              {' '}
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-6 mb-4">
+          <div className="card auctionCard rounded">
+            <img
+              src={`${host}/img/${auction.img}`}
+              className="card-img-top"
+              alt={auction.title}
+              height="400px"
+              width="400px"
+            />
+          </div>
+        </div>
+        <div className="col-md-6 mb-4">
+          <div className="d-flex align-items-center offers mb-1">
+            <span className="text-uppercase text-black-50">Категория:</span>
+            <span className="text-uppercase text-black-50">
+              &nbsp;
               {auction['Category.nameCategory']}
-            </span>
-            {' '}
-            <span>
-              Состояние:
-              {' '}
-              {auction['Condition.nameCondition']}
-            </span>
-            {' '}
-            <span>
-              Локация:
-              {' '}
-              {auction.location}
+              <br />
             </span>
           </div>
-          <div />
-          <div>
-            <div>
-              Окончание торгов через:
+          <h5 className="display-6">
+            {' '}
+            {auction.title}
+          </h5>
+          <div className="d-flex align-items-center offers">
+            <p className="ml-1 font-weight-bold">Местонахождение товара:</p>
+            <p className="ml-1 fw-bold">
               {' '}
+              &nbsp;
+              {auction.location}
+              <br />
+            </p>
+          </div>
+          <div className="d-flex align-items-center offers">
+            <p className="ml-1 font-weight-bold">Состояние:</p>
+            <p className="ml-1 fw-bold">
+              {' '}
+                &nbsp;
+              {auction['Condition.nameCondition']}
+              <br />
+            </p>
+          </div>
+          <div className="d-flex align-items-center offers">
+            <p>Владелец товара:</p>
+            <p>
+            &nbsp;
+              {auction['User.name']}
+            </p>
+          </div>
+          <div className="card-content">
+            <p className="ml-1 font-weight-bold">Описание товара:</p>
+            <p className="d-flex offers mb-1 ml-1 fw-normal">
+                &nbsp;
+              {auction.info}
+              <br />
+            </p>
+          </div>
+          <div className="d-flex align-items-center offers mb-1">
+            <p className="ml-1 fw-bold">Окончание торгов через: &nbsp;</p>
+            <p>
               {auction['Bidding.end_bidding']}
-            </div>
-            <div>
-              Цена:
-              {' '}
+            </p>
+          </div>
+          <div className="card-content">
+            <p className="lead fw-bold">
+              Цена:&nbsp;
               {(+auction['Bidding.price'] === 0)
                 ? 'Приезжай забирай'
                 : auction['Bidding.price']}
-            </div>
-            <div>
+              {' '}
+              ₽
+            </p>
+          </div>
+          <div>
+            <div className="d-flex align-items-center offers mb-1">
               <div>
                 Ставка:
                 {' '}
@@ -112,12 +131,13 @@ function AuctionCard() {
                 { (+auction['Bidding.price'] === 0)
                   ? (<button type="submit" className="btn btn-warning" onClick={handleCreate}>Забрать бесплатно</button>)
                   : (
-                    <>
-                      <button type="submit" className="btn btn-warning" onClick={handleUp}>Поднять ставку</button>
-                      <div>
-                        <button type="submit" className="btn btn-warning" onClick={handleCreate}>Сделать ставку</button>
+                    <div className="row">
+
+                      <div className="mt-3">
+                        <button className="btn btn-outline-dark mr-2" onClick={handleUp} type="submit">Поднять ставку</button>
+                        <button type="submit" className="btn btn-outline-primary mx-3" onClick={handleCreate}>Сделать ставку</button>
                       </div>
-                    </>
+                    </div>
                   )}
               </div>
             </div>
@@ -125,7 +145,7 @@ function AuctionCard() {
         </div>
       </div>
       <Comments />
-    </>
+    </div>
   );
 }
 

@@ -30,29 +30,36 @@ function Comments() {
   };
   // console.log(comment, '&&&');
   return (
-    <div className="col md-3 mb-4">
-      {user
-        ? (
-          <div>
-            <div className="col-sm-9 text-secondary">
-              <input onChange={handleChange} value={input} type="text" name="text" className="form-control" placeholder="Введите наименование" required />
-            </div>
-            <div>
-              <button type="submit" className="btn btn-warning" onClick={handleCreate}>Добавить коментарий</button>
-            </div>
+    <div className="container mt-3 mb-5">
+      <div className="row height d-flex justify-content-start align-items-center">
+        <div className="col-md-12">
+          <div className="p-3">
+            <h5>Комментарии</h5>
           </div>
-        ) : (<p />)}
-      <div>
-        {commentsData
-          .filter((el) => Number(el.product_id) === Number(id.id))
-          .map((el) => (
-            <Comment
-              key={el.id}
-              name={el.name}
-              data={el.updatedAt}
-              text={el.text}
-            />
-          ))}
+          {user
+            ? (
+              <div>
+                <div className="col-sm-9 text-secondary">
+                  <input onChange={handleChange} value={input} type="textarea" name="text" className="form-control" placeholder="Введите комментарий" required />
+                </div>
+                <div>
+                  <button type="submit" className="btn btn-outline-primary mt-3" onClick={handleCreate}>Добавить коментарий</button>
+                </div>
+              </div>
+            ) : (<p />)}
+          <div>
+            {commentsData && commentsData
+              .filter((el) => Number(el.product_id) === Number(id.id))
+              .map((el) => (
+                <Comment
+                  key={el.id}
+                  name={el.name}
+                  data={el.updatedAt}
+                  text={el.text}
+                />
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

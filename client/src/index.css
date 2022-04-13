@@ -77,3 +77,14 @@ nav {
 .biddings-container:hover .overlay {
 	opacity: 1;
 }
+card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+.price span {
+  font-size: 18px
+}
+.offers i {
+  color: green
+}
