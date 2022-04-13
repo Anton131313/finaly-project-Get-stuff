@@ -12,4 +12,6 @@ const getInitState = () => {
   return stateFromLS || initState;
 };
 
+// const getInitState = () => initState;
+
 export default getInitState;

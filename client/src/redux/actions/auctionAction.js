@@ -8,8 +8,12 @@ export const setAuction = (auction) => ({
 });
 
 export const getAuctionData = (id) => async (dispatch) => {
+  console.log('111111111111111111111111');
   axios.get(`${config.getAuction(id.id)}`)
-    .then((response) => dispatch(setAuction(response.data)));
+    .then((response) => {
+      console.log(response);
+      dispatch(setAuction(response.data));
+    });
 };
 
 export const setComments = (comments) => ({
