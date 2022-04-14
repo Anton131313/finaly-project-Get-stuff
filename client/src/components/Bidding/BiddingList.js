@@ -38,7 +38,7 @@ function BiddingList() {
         </div>
         <div className="list mb-5">
           {/* {pages.length && <Pagination />} */}
-          {products?.map((el) => (
+          {filter?.map((el) => (
             <BiddingCard
               key={el.id}
               id={el.id}

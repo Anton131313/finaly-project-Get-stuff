@@ -120,6 +120,7 @@ function ProfileData() {
         <button className="btn btn-secondary my-3">Сохранить изменения</button>
         <Link to="/addBidding"><button className="btn btn-secondary my-3 mx-3">Подать объявление</button></Link>
         <Link to="/myProducts"><button className="btn btn-secondary my-3 mx-1">Мои объявления</button></Link>
+        <Link to="/myAuctions"><button className="btn btn-secondary my-3 mx-1">Мои аукционы</button></Link>
       </div>
     </form>
   );

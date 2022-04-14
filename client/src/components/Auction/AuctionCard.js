@@ -48,14 +48,14 @@ function AuctionCard() {
   const dateTimeAfterThreeDays = Date.UTC(
     cardData[2],
     (Number(cardData[1]) - 1),
-    cardData[0],
+    (Number(cardData[0]) - 3),
     cardData[3],
     cardData[4],
   );
 
   console.log('=============>', auction);
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-6">
       <div className="row">
         <div className="col-md-6 mb-4">
           <div className="card auctionCard rounded">
