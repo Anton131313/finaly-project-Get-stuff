@@ -14,9 +14,9 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, sagaMiddleware)),
 );
 
-// store.subscribe(() => {
-//   window.localStorage.setItem('redux', JSON.stringify(store.getState()));
-// });
+store.subscribe(() => {
+  window.localStorage.setItem('redux', JSON.stringify(store.getState()));
+});
 
 sagaMiddleware.run(rootSaga);
 

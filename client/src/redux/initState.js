@@ -7,8 +7,11 @@ const initState = {
   price: '',
 };
 
-const getInitState = () => initState;
-// const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
-// return stateFromLS || initState;
+const getInitState = () => {
+  const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+  return stateFromLS || initState;
+};
+
+// const getInitState = () => initState;
 
 export default getInitState;

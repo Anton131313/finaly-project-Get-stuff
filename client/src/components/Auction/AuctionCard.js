@@ -12,28 +12,18 @@ function AuctionCard() {
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
 
-  const cardData = auction['Bidding.end_bidding']
-    .split(' ')
-    .map((el) => el.split('-').join(' '))
-    .join(' ')
-    .split(' ');
-  const dateTimeAfterThreeDays = Date.UTC(
-    cardData[2],
-    (Number(cardData[1]) - 1),
-    cardData[0],
-    cardData[3],
-    cardData[4],
-  );
+  useEffect(() => {
+    console.log('12312312321312123');
+    dispatch(getAuctionData(id));
+    // setInputs(`${auction['Bidding.price']}`);
+  }, []);
 
-  let inputState = '';
-  if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; } else { inputState = auction['Bidding.price_step']; }
+  console.log('***********************', id);
+  const inputState = '';
+  // if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; }
+  // else { inputState = auction['Bidding.price_step']; }
 
   const [input, setInputs] = useState(inputState);
-
-  useEffect(() => {
-    // setInputs(`${auction['Bidding.price']}`);
-    dispatch(getAuctionData(id));
-  }, [input]);
 
   const handleUp = () => {
     console.log(+input, +auction['Bidding.price_step'], 2);
@@ -52,6 +42,16 @@ function AuctionCard() {
     dispatch(createPriceData(id, payload));
     setInputs(`${auction['Bidding.price']}`);
   };
+
+  console.log('***********************', auction);
+  const cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
+  const dateTimeAfterThreeDays = Date.UTC(
+    cardData[2],
+    (Number(cardData[1]) - 1),
+    cardData[0],
+    cardData[3],
+    cardData[4],
+  );
 
   console.log('=============>', auction);
   return (
