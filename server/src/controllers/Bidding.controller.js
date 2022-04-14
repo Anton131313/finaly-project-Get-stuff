@@ -1,4 +1,6 @@
-const { Bidding, Product, User } = require('../../db/models');
+const {
+  Bidding, Product, User, User_Bidding,
+} = require('../../db/models');
 
 const addBidding = async (req, res) => {
   const user_id = req.session.user.id;
@@ -67,20 +69,35 @@ const myBidding = async (req, res) => {
         include:
       [{
         model: Bidding,
+        attributes: ['price', 'price_step', 'end_bidding'],
         required: true,
         include:
             [{
               model: User,
               where: { id: user_id },
+              attributes: ['name', 'phone'],
             }],
       }],
+        order: [
+          ['id', 'DESC'],
+        ],
         raw: true,
       },
     );
-    // console.log(Useridding);
+
     if (Useridding.length === 0) {
       return res.sendStatus(404);
     }
+    for (let i = 0; i < Useridding.length; i += 1) {
+      // const userPrice = await User_Bidding.findOne({
+      //   where: {
+      //     bidding_id: Useridding[i]['Bidding.Users.User_Biddings.bidding_id'],
+      //     user_id,
+      //   },
+      //   raw: true,
+      // });
+    }
+
     res.json(Useridding);
   } catch (error) {
     return res.sendStatus(500);

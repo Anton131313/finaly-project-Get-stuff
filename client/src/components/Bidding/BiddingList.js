@@ -7,12 +7,22 @@ function BiddingList() {
   const products = useSelector((store) => store.products);
   const [buttonState, setbuttonState] = useState(true);
   const dispatch = useDispatch();
+  const [filter, setFilter] = useState([]);
+
+  console.log(filter);
+  console.log(products);
+
   useEffect(() => {
+    console.log(('****'));
     dispatch(getAllProductsFromDB());
     setbuttonState(false);
   }, []);
+
+  useEffect(() => {
+    setFilter(products);
+  }, [products]);
+
   // console.log(999999999999, products);
-  const [filter, setFilter] = useState(products);
   const filterProduct = (category) => {
     const filteredProducts = products.filter((el) => el['Category.nameCategory'] === category);
     console.log('filter', filteredProducts);

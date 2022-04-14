@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import Footer from './components/UI/Footer';
 import Header from './components/UI/Header';
@@ -15,6 +15,10 @@ import MyBiddings from './components/Bidding/MyBiddings';
 axios.defaults.withCredentials = true;
 
 function App() {
+  useEffect(() => {
+    console.log('123456778');
+  }, []);
+
   return (
     <div className="main">
       <Header />

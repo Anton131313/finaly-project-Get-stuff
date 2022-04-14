@@ -42,12 +42,25 @@ function CountdownTimer({ targetDate }) {
     return <ExpiredNotice />;
   }
   return (
-    <ShowCounter
-      days={days}
-      hours={hours}
-      minutes={minutes}
-      seconds={seconds}
-    />
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {days ? (
+        <ShowCounter
+          days={days}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
+      )
+        : (
+          <ShowCounter
+            days={0}
+            hours={0}
+            minutes={0}
+            seconds={0}
+          />
+        )}
+    </>
   );
 }
 
