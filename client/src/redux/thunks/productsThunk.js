@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { addProduct, allProducts, deleteProduct } from '../actions/productsAction';
+import { getWinner } from '../actions/winnerAction';
 
 const { REACT_APP_HOST: host } = process.env;
 
@@ -22,4 +23,8 @@ export const deleteProductFromDB = (id) => (dispatch) => {
     .then(() => dispatch(deleteProduct(id)));
 };
 
-
+export const getWinnerFromDB = (id) => (dispatch) => {
+  dispatch(getWinner({ name: 'Inga' }));
+  // axios.get(`${host}/winner/${id}`)
+  //   .then((res) => dispatch(getWinner(res.data)));
+};

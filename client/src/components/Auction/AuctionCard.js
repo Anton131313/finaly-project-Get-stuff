@@ -51,11 +51,12 @@ function AuctionCard() {
   function aux() {
     try {
       cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
+      console.log(cardData);
       dateTimeAfterThreeDays = Date.UTC(
         cardData[2],
         (Number(cardData[1]) - 1),
         cardData[0],
-        cardData[3],
+        (Number(cardData[3]) - 3),
         cardData[4],
       );
     } catch (e) {
@@ -64,7 +65,6 @@ function AuctionCard() {
   }
 
   aux();
-
 
   console.log('=============>', auction);
   return (
@@ -76,8 +76,6 @@ function AuctionCard() {
               src={`${host}/img/${auction.img}`}
               className="card-img-top"
               alt={auction.title}
-              height="400px"
-              width="400px"
             />
           </div>
         </div>

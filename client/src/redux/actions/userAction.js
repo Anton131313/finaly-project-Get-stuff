@@ -89,3 +89,4 @@ export const editUser = (inputs, id) => async (dispatch) => {
     .then((data) => dispatch(setUser(data)));
   // if (response.status === 200) { await dispatch(editUser(response.json())); }
 };
+
