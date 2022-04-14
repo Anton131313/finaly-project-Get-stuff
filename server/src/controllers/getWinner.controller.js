@@ -11,20 +11,17 @@ const getWinner = async (req, res) => {
       },
       attributes: ['price'],
     });
-
     const winner_Bidding = await User_Bidding.findOne({
       where: {
         users_bid: currBidding.price,
       },
       attributes: ['user_id'],
     });
-
     const currUser = await User.findOne({
       where: {
         id: winner_Bidding.user_id,
       },
     });
-
     const winner = {
       user_id: winner_Bidding.user_id,
       name: currUser.name,
@@ -33,11 +30,9 @@ const getWinner = async (req, res) => {
       email: currUser.email,
       price: currBidding.price,
     };
-
     res.json(winner);
   } catch (error) {
     res.sendStatus(418);
   }
 };
-
 module.exports = { getWinner };
