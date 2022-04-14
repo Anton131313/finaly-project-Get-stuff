@@ -14,6 +14,7 @@ const allProductsRouter = require('./src/routes/allProducts.router'); // Пок�
 const userCommentRouter = require('./src/routes/userComment.router'); // комментарий к продукту
 const auctionRouter = require('./src/routes/auction.router');
 const allUserBidding = require('./src/routes/allUserBidding.router'); // показать все ставки по конкретному продукту
+const winnerRouter = require('./src/routes/winner.router'); // возвращает победителя (самая большая ставка)
 
 const app = express();
 
@@ -51,6 +52,7 @@ app.use('/allProducts', allProductsRouter);
 app.use('/addComment', userCommentRouter);
 app.use('/', auctionRouter);
 app.use('/userBidding', allUserBidding);
+app.use('/winner', winnerRouter);
 
 app.listen(PORT, () => {
   console.log('Сервер запущен, порт:', PORT);

@@ -23,6 +23,7 @@ export const deleteProductFromDB = (id) => (dispatch) => {
     .then(() => dispatch(deleteProduct(id)));
 };
 
+
 export const getWinnerFromDB = (id) => (dispatch) => {
   dispatch(getWinner({ name: 'Inga' }));
   // axios.get(`${host}/winner/${id}`)
