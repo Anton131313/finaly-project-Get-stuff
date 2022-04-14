@@ -30,7 +30,7 @@ function BiddingCard({
           src={`${host}/img/${img}`}
           className="card-img-top"
           alt={title}
-          height="250px"
+          height="320px"
         />
         <div className="card-body">
           <h5 className="card-title mb-0">{title}</h5>

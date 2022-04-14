@@ -65,9 +65,10 @@ function AuctionCard() {
 
   aux();
 
+
   console.log('=============>', auction);
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-6">
       <div className="row">
         <div className="col-md-6 mb-4">
           <div className="card auctionCard rounded">

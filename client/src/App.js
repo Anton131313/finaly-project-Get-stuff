@@ -11,13 +11,13 @@ import BiddingForm from './components/Bidding/BiddingForm';
 import LogOut from './components/Auth/LogOut';
 import AuctionCard from './components/Auction/AuctionCard';
 import MyBiddings from './components/Bidding/MyBiddings';
+import MyAuctions from './components/Auction/MyAuctions';
 
 axios.defaults.withCredentials = true;
 
 function App() {
-  useEffect(() => {
-    console.log('123456778');
-  }, []);
+
+  setInputs(`${auction['Bidding.price']}`);
 
   return (
     <div className="main">
@@ -32,6 +32,7 @@ function App() {
         {/* <Route path="/AuctionCard" element={<AuctionCard />} /> */}
         <Route path="/bidding/:id" element={<AuctionCard />} />
         <Route path="/myProducts" element={<MyBiddings />} />
+        <Route path="/myAuctions" element={<MyAuctions />} />
       </Routes>
       <Footer />
     </div>
