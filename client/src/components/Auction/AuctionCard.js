@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createPriceData, getAuctionData } from '../../redux/actions/auctionAction';
+import { createPriceData } from '../../redux/actions/auctionAction';
 import Comments from './Comments';
 import CountdownTimer from './CountdownTimer';
 
@@ -12,11 +12,11 @@ function AuctionCard() {
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log('12312312321312123');
-    dispatch(getAuctionData(id));
-    // setInputs(`${auction['Bidding.price']}`);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAuctionData(id));
+  //   console.log('12312312321312123');
+  //   // setInputs(`${auction['Bidding.price']}`);
+  // }, []);
 
   console.log('***********************', id);
   const inputState = '';
@@ -44,14 +44,26 @@ function AuctionCard() {
   };
 
   console.log('***********************', auction);
-  const cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
-  const dateTimeAfterThreeDays = Date.UTC(
-    cardData[2],
-    (Number(cardData[1]) - 1),
-    cardData[0],
-    cardData[3],
-    cardData[4],
-  );
+
+  let cardData;
+  let dateTimeAfterThreeDays;
+
+  function aux() {
+    try {
+      cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
+      dateTimeAfterThreeDays = Date.UTC(
+        cardData[2],
+        (Number(cardData[1]) - 1),
+        cardData[0],
+        cardData[3],
+        cardData[4],
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  aux();
 
   console.log('=============>', auction);
   return (
@@ -135,13 +147,7 @@ function AuctionCard() {
               <div>
                 Ставка:
                 {' '}
-                <input
-                  value={input}
-                  type="text"
-                  name="text"
-                  className="form-control"
-                  required
-                />
+                <div><h4>{input}</h4></div>
                 { (+auction['Bidding.price'] === 0)
                   ? (<button type="submit" className="btn btn-warning" onClick={handleCreate}>Забрать бесплатно</button>)
                   : (

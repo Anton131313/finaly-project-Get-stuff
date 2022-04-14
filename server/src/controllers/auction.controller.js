@@ -8,8 +8,6 @@ const {
 } = require('../../db/models');
 
 const getAuction = async (req, res) => {
-  // const user_id = req.session.user.id;
-  // console.log(req.params, '======', user_id );
   const { id } = req.params;
   try {
     const auctionProduct = await Product.findOne({
@@ -43,8 +41,8 @@ const getAuction = async (req, res) => {
 };
 
 const postAuction = async (req, res) => {
-  // const user_id = req.session.user.id;
-  const user_id = 1;
+  const user_id = req.session.user.id;
+  // const user_id = 1;
   const product_id = Number(req.params.id);
   const { price } = req.body;
 
@@ -65,6 +63,7 @@ const postAuction = async (req, res) => {
     ],
     raw: true,
   });
+
   // тут пишем условие: если ставок нет то создаём ставку и обновляем прайс у продукта
   if (currUserBidding === null) {
     // тут нам необходимо узнать ID Bidding
@@ -74,12 +73,14 @@ const postAuction = async (req, res) => {
       },
       attributes: ['id'],
     });
+
     // создаём новую запись в базе
     const newUserBidding = await User_Bidding.create({
       bidding_id: currBidding.id,
       user_id,
       users_bid: price,
     });
+
     // обновляем прайс у продукта
     const updatePriceBidding = await Bidding.update(
       {
@@ -92,6 +93,17 @@ const postAuction = async (req, res) => {
       },
       },
     );
+
+    // находим сделку с новым прайсом
+    const newPrice = await Bidding.findOne({
+      where: {
+        product_id,
+      },
+    });
+
+    // и отправляем на клиент
+    res.json(newPrice);
+
     // в случае если у юзера уже есть ставки по конкретному продукту
   } else {
     // обновляем старую ставку на новую
@@ -107,6 +119,7 @@ const postAuction = async (req, res) => {
       },
       },
     );
+
     // обновляем прайс у продукта
     const updatePriceBidding = await Bidding.update(
       {
@@ -119,6 +132,15 @@ const postAuction = async (req, res) => {
       },
       },
     );
+    // находим сделку с новым прайсом
+    const newPrice = await Bidding.findOne({
+      where: {
+        product_id,
+      },
+    });
+
+    // и отправляем на клиент
+    res.json(newPrice);
   }
   // иии всё =)
 };
