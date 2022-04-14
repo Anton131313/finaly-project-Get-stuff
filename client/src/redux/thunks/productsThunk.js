@@ -21,5 +21,3 @@ export const deleteProductFromDB = (id) => (dispatch) => {
     // .then((response) => console.log(response.data));
     .then(() => dispatch(deleteProduct(id)));
 };
-
-

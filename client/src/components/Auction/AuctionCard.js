@@ -55,7 +55,7 @@ function AuctionCard() {
         cardData[2],
         (Number(cardData[1]) - 1),
         cardData[0],
-        cardData[3],
+        (Number(cardData[3]) - 3),
         cardData[4],
       );
     } catch (e) {
@@ -64,7 +64,6 @@ function AuctionCard() {
   }
 
   aux();
-
 
   console.log('=============>', auction);
   return (
