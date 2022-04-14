@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { getAuctionData } from '../../redux/actions/auctionAction';
 import { deleteProductFromDB } from '../../redux/thunks/productsThunk';
 import Modal from '../Modal/Modal';
 
@@ -14,7 +15,13 @@ function BiddingCard({
   const deleteHandler = () => {
     dispatch(deleteProductFromDB(id));
   };
-  // console.log(id, img, title, info, condition, location);
+  const navigate = useNavigate();
+  // console.log(id);
+  const handlerNavAuct = () => {
+    // dispatch(getCommentsData(id));
+    dispatch(getAuctionData({ id }, navigate));
+    console.log('GGGGGGGG');
+  };
 
   return (
     <div className="col md-3 mb-4">
@@ -41,7 +48,8 @@ function BiddingCard({
           </div>
         </div>
         <div>
-          <Link to={`/bidding/${id}`}><button type="button" className="btn btn-outline-primary mx-4">Детали</button></Link>
+          {/* <Link to={`/bidding/${id}`}></Link> */}
+          <button onClick={handlerNavAuct} type="button" className="btn btn-outline-primary mx-4">Детали</button>
           { buttonState ? (
             <>
               <button onClick={() => { setOpenModal(true); }} type="button" className="btn btn-outline-danger openModalBtn">

@@ -7,10 +7,11 @@ export const setAuction = (auction) => ({
   payload: auction,
 });
 
-export const getAuctionData = (id) => async (dispatch) => {
+export const getAuctionData = (id, navigate) => async (dispatch) => {
   console.log('111111111111111111111111');
   axios.get(`${config.getAuction(id.id)}`)
     .then((response) => {
+      navigate(`/bidding/${id.id}`);
       console.log(response);
       dispatch(setAuction(response.data));
     });

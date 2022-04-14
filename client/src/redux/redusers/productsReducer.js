@@ -7,7 +7,7 @@ const productsReducer = (state = [], { type, payload } = {}) => {
     case ALL_PRODUCTS:
       return payload;
     case ADD_PRODUCT:
-      return [payload, ...state];
+      return [...state, payload];
     case DELETE_PRODUCT:
       return state.filter((el) => el.id !== payload);
     default:
