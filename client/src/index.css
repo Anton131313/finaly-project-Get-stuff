@@ -59,8 +59,12 @@ nav {
   gap: 1rem;
 }
 .card {
+  width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
 }
 .card-content {
   flex-grow: 1;

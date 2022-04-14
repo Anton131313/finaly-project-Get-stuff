@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCountdown } from '../../hooks/useCountdown';
 import DateTimeDisplay from './DateTimeDisplay';
 import '../../App.css';
+import { getWinnerFromDB } from '../../redux/thunks/productsThunk';
 
 function ExpiredNotice() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const winner = useSelector((store) => store.winner);
+
+  useEffect(() => {
+    dispatch(getWinnerFromDB(id));
+  }, []);
+
   return (
     <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
+      <span>
+        {winner.name}
+        !!!
+      </span>
+      <p>На вашу почту выслана информация о дальнейших действиях</p>
     </div>
   );
 }
@@ -44,7 +59,7 @@ function CountdownTimer({ targetDate }) {
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {days ? (
+      {days || hours || minutes || seconds ? (
         <ShowCounter
           days={days}
           hours={hours}
