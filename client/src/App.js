@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Footer from './components/UI/Footer';
 import Header from './components/UI/Header';
@@ -16,9 +16,6 @@ import MyAuctions from './components/Auction/MyAuctions';
 axios.defaults.withCredentials = true;
 
 function App() {
-
-  setInputs(`${auction['Bidding.price']}`);
-
   return (
     <div className="main">
       <Header />
@@ -29,7 +26,6 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
-        {/* <Route path="/AuctionCard" element={<AuctionCard />} /> */}
         <Route path="/bidding/:id" element={<AuctionCard />} />
         <Route path="/myProducts" element={<MyBiddings />} />
         <Route path="/myAuctions" element={<MyAuctions />} />
