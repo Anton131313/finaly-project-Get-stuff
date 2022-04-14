@@ -7,12 +7,12 @@ export const setAuction = (auction) => ({
   payload: auction,
 });
 
-export const getAuctionData = (id, navigate) => async (dispatch) => {
-  console.log('111111111111111111111111');
+export const getAuctionData = (id) => async (dispatch) => {
+  console.log('uUUuuuuUUUUUUUUUUU111111', id.id);
   axios.get(`${config.getAuction(id.id)}`)
     .then((response) => {
-      navigate(`/bidding/${id.id}`);
-      console.log(response);
+      // navigate(`/bidding/${id.id}`);
+      console.log(response.data, 'uUUuuuuUUUUUUUUUUU');
       dispatch(setAuction(response.data));
     });
 };
@@ -45,5 +45,8 @@ export const createPrice = (data) => ({
 export const createPriceData = (id, payload) => async (dispatch) => {
   console.log(payload, '<<<<<<<<<<');
   axios.post(`${config.addPrice(id.id)}`, payload)
-    .then((response) => dispatch(createPrice(response.data)));
+    .then((response) => {
+      console.log(22222222, response.data);
+      dispatch(createPrice(response.data));
+    });
 };

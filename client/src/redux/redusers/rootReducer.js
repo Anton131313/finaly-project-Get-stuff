@@ -4,7 +4,6 @@ import productsReducer from './productsReducer';
 import auctionReducer, { winnerReducer } from './auctionReducer';
 import searchReducer from './searchReducer';
 import commentReducer from './commentReducer';
-import priceReducer from './priceReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   auction: auctionReducer,
   search: searchReducer,
   comments: commentReducer,
-  price: priceReducer,
   winner: winnerReducer,
 });
 
