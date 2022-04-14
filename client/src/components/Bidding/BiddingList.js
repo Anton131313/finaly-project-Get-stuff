@@ -15,10 +15,8 @@ function BiddingList() {
   const [filter, setFilter] = useState(products);
   const filterProduct = (category) => {
     const filteredProducts = products.filter((el) => el['Category.nameCategory'] === category);
-    console.log('filter', filteredProducts);
     setFilter(filteredProducts);
   };
-  console.log('tut');
 
   return (
     <div className="my-4 py-2">

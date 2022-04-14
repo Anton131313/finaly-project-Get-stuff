@@ -15,6 +15,10 @@ import MyBiddings from './components/Bidding/MyBiddings';
 axios.defaults.withCredentials = true;
 
 function App() {
+  // useEffect(() => {
+  //   console.log(('1234567890'));
+  // });
+
   return (
     <div className="main">
       <Header />
@@ -25,7 +29,6 @@ function App() {
         <Route path="/logout" element={<LogOut />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/addBidding" element={<BiddingForm />} />
-        {/* <Route path="/AuctionCard" element={<AuctionCard />} /> */}
         <Route path="/bidding/:id" element={<AuctionCard />} />
         <Route path="/myProducts" element={<MyBiddings />} />
       </Routes>

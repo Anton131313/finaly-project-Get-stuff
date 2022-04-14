@@ -10,23 +10,22 @@ const { REACT_APP_HOST: host } = process.env;
 function AuctionCard() {
   const id = useParams();
   const auction = useSelector((store) => store.auction);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
+  const [input, setInputs] = useState(auction['Bidding.price_step']);
+  console.log(auction);
   useEffect(() => {
-    console.log('12312312321312123');
     dispatch(getAuctionData(id));
-    // setInputs(`${auction['Bidding.price']}`);
-  }, []);
+  }, [input]);
 
-  console.log('***********************', id);
-  const inputState = '';
+  // console.log('***********************', id);
+  // const inputState = '';
   // if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; }
   // else { inputState = auction['Bidding.price_step']; }
 
-  const [input, setInputs] = useState(inputState);
-
   const handleUp = () => {
-    console.log(+input, +auction['Bidding.price_step'], 2);
+    // console.log(+input, +auction['Bidding.price_step'], 2);
     setInputs(() => Number(input) + Number(auction['Bidding.price_step']));
   };
 
@@ -43,17 +42,15 @@ function AuctionCard() {
     setInputs(`${auction['Bidding.price']}`);
   };
 
-  console.log('***********************', auction);
-  const cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
-  const dateTimeAfterThreeDays = Date.UTC(
-    cardData[2],
-    (Number(cardData[1]) - 1),
-    cardData[0],
-    cardData[3],
-    cardData[4],
-  );
+  // const cardData = auction['Bidding.end_bidding'].split(' ').map((el) => el.split('-').join(' ')).join(' ').split(' ');
+  // const dateTimeAfterThreeDays = Date.UTC(
+  //   cardData[2],
+  //   (Number(cardData[1]) - 1),
+  //   (Number(cardData[1]) - 3),
+  //   cardData[3],
+  //   cardData[4],
+  // );
 
-  console.log('=============>', auction);
   return (
     <div className="container mt-5">
       <div className="row">
@@ -115,7 +112,7 @@ function AuctionCard() {
             </p>
           </div>
           <div className="d-flex align-items-center offers mb-1">
-            <p className="ml-1 fw-bold">Окончание торгов через: &nbsp;</p>
+            <p className="ml-1 fw-bold">Окончание торгов: &nbsp;</p>
             <p>
               {auction['Bidding.end_bidding']}
             </p>
@@ -123,18 +120,21 @@ function AuctionCard() {
           <div className="card-content">
             <p className="lead fw-bold">
               Цена:&nbsp;
-              {(+auction['Bidding.price'] === 0)
-                ? 'Приезжай забирай'
-                : auction['Bidding.price']}
+              {auction['Bidding.price']}
               {' '}
               ₽
             </p>
           </div>
           <div>
+            <div>
+              Ставка:
+              {' '}
+              {auction['Bidding.price_step']}
+              {' '}
+              ₽
+            </div>
             <div className="d-flex align-items-center offers mb-1">
-              <div>
-                Ставка:
-                {' '}
+              <div className="row">
                 <input
                   value={input}
                   type="text"
@@ -142,23 +142,19 @@ function AuctionCard() {
                   className="form-control"
                   required
                 />
-                { (+auction['Bidding.price'] === 0)
-                  ? (<button type="submit" className="btn btn-warning" onClick={handleCreate}>Забрать бесплатно</button>)
-                  : (
-                    <div className="row">
-
-                      <div className="mt-3">
-                        <button className="btn btn-outline-dark mr-2" onClick={handleUp} type="submit">Поднять ставку</button>
-                        <button type="submit" className="btn btn-outline-primary mx-3" onClick={handleCreate}>Сделать ставку</button>
-                      </div>
-                    </div>
-                  )}
+                { user
+                && (
+                <div className="mt-3">
+                  <button className="btn btn-outline-dark mr-2" onClick={handleUp} type="submit">Поднять ставку</button>
+                  <button type="submit" className="btn btn-outline-primary mx-3" onClick={handleCreate}>Сделать ставку</button>
+                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+      {/* <CountdownTimer targetDate={dateTimeAfterThreeDays} /> */}
       <Comments />
     </div>
   );

@@ -4,14 +4,25 @@ const initState = {
   auction: [],
   search: [],
   comments: [],
-  price: '',
+  // price: '',
 };
 
-const getInitState = () => {
-  const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
-  return stateFromLS || initState;
-};
+// const getInitState = () => {
+//   const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+//   return stateFromLS || initState;
+// };
 
-// const getInitState = () => initState;
+const getInitState = () => initState;
 
 export default getInitState;
+
+// export default function initState() {
+//   return {
+//     user: null,
+//     products: [],
+//     auction: [],
+//     search: [],
+//     comments: [],
+//     price: '',
+//   };
+// }

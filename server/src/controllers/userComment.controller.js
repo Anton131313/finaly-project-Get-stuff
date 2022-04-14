@@ -20,9 +20,14 @@ const addComment = async (req, res) => {
     },
   });
   const userComment = {
+    user_id: newComment.user_id,
+    product_id: newComment.product_id,
+    id: newComment.id,
     name: CurUser.name,
     text: newComment.text,
+    updatedAt: newComment.updatedAt,
     createdAt: newComment.createdAt,
+
   };
   return res.json(userComment);
 };

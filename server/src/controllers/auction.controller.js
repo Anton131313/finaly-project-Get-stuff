@@ -92,6 +92,7 @@ const postAuction = async (req, res) => {
       },
       },
     );
+    res.json(newUserBidding);
     // в случае если у юзера уже есть ставки по конкретному продукту
   } else {
     // обновляем старую ставку на новую
@@ -119,6 +120,13 @@ const postAuction = async (req, res) => {
       },
       },
     );
+    const trueUserBidding = await User_Bidding.findOne({
+      where: {
+        id: currUserBidding.id,
+        user_id,
+      },
+    });
+    res.json(trueUserBidding);
   }
   // иии всё =)
 };
