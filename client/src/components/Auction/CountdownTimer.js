@@ -8,7 +8,6 @@ import { getWinnerFromDB } from '../../redux/thunks/productsThunk';
 
 function ExpiredNotice() {
   const { id } = useParams();
-  console.log(id, '-----');
   const dispatch = useDispatch();
 
   const winner = useSelector((store) => store.winner);

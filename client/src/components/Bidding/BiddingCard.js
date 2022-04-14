@@ -19,8 +19,8 @@ function BiddingCard({
   // console.log(id);
   const handlerNavAuct = () => {
     // dispatch(getCommentsData(id));
-    dispatch(getAuctionData({ id }, navigate));
-    console.log('GGGGGGGG');
+    dispatch(getAuctionData({ id }));
+    navigate(`/bidding/${id}`);
   };
 
   return (

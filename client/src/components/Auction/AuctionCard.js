@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { createPriceData } from '../../redux/actions/auctionAction';
+import { getAuctionData, createPriceData } from '../../redux/actions/auctionAction';
 import Comments from './Comments';
 import CountdownTimer from './CountdownTimer';
 
@@ -11,36 +11,52 @@ function AuctionCard() {
   const id = useParams();
   const auction = useSelector((store) => store.auction);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
 
-  // useEffect(() => {
-  //   dispatch(getAuctionData(id));
-  //   console.log('12312312321312123');
-  //   // setInputs(`${auction['Bidding.price']}`);
-  // }, []);
+  const [bid, setBids] = useState(auction['Bidding.price_step']);
+  const [price, setPrice] = useState(JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']);
+  const [priceChanged, setPriceChanged] = useState(false);
+
+  useEffect(() => {
+    // setPrice(localStorage.getItem('Bidding.price'));
+    dispatch(getAuctionData(id));
+    console.log(JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']);
+    // window.location.reload(false);
+  }, []);
 
   console.log('***********************', id);
-  const inputState = '';
+  // const inputState = '';
   // if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; }
   // else { inputState = auction['Bidding.price_step']; }
 
-  const [input, setInputs] = useState(inputState);
-
   const handleUp = () => {
-    console.log(+input, +auction['Bidding.price_step'], 2);
-    setInputs(() => Number(input) + Number(auction['Bidding.price_step']));
+    console.log(+bid, +auction['Bidding.price_step'], 2);
+    setBids(Number(bid) + Number(auction['Bidding.price_step']));
   };
 
   const handleCreate = (e) => {
     e.preventDefault();
-    let newPrice = input;
-    if (Number(input)) {
-      newPrice = Number(input) + Number(auction['Bidding.price']);
+    // if (Number(bid)) {
+    if (!priceChanged) {
+      const newPrice = Number(bid) + +JSON.parse(localStorage.getItem('redux')).auction['Bidding.price'];
+      // } else {
+      //   newPrice = bid;
+      // }
+      setPrice((Number(bid) + +JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']));
+      setPriceChanged(true);
+      setBids(Number(auction['Bidding.price_step']));
+      const payload = { price: newPrice };
+      dispatch(createPriceData(id, payload));
     } else {
-      newPrice = input;
+      const newPrice = Number(bid) + Number(price);
+      // } else {
+      //   newPrice = bid;
+      // }
+      setPrice((Number(bid) + Number(price)));
+      setBids(Number(auction['Bidding.price_step']));
+      const payload = { price: newPrice };
+      dispatch(createPriceData(id, payload));
     }
-    const payload = { price: newPrice };
-    dispatch(createPriceData(id, payload));
-    setInputs(`${auction['Bidding.price']}`);
   };
 
   console.log('***********************', auction);
@@ -126,7 +142,7 @@ function AuctionCard() {
             </p>
           </div>
           <div className="d-flex align-items-center offers mb-1">
-            <p className="ml-1 fw-bold">Окончание торгов через: &nbsp;</p>
+            <p className="ml-1 fw-bold">Окончание торгов: &nbsp;</p>
             <p>
               {auction['Bidding.end_bidding']}
             </p>
@@ -134,9 +150,7 @@ function AuctionCard() {
           <div className="card-content">
             <p className="lead fw-bold">
               Цена:&nbsp;
-              {(+auction['Bidding.price'] === 0)
-                ? 'Приезжай забирай'
-                : auction['Bidding.price']}
+              {!priceChanged ? JSON.parse(localStorage.getItem('redux')).auction['Bidding.price'] : price}
               {' '}
               ₽
             </p>
@@ -146,18 +160,15 @@ function AuctionCard() {
               <div>
                 Ставка:
                 {' '}
-                <div><h4>{input}</h4></div>
-                { (+auction['Bidding.price'] === 0)
-                  ? (<button type="submit" className="btn btn-warning" onClick={handleCreate}>Забрать бесплатно</button>)
-                  : (
-                    <div className="row">
-
-                      <div className="mt-3">
-                        <button className="btn btn-outline-dark mr-2" onClick={handleUp} type="submit">Поднять ставку</button>
-                        <button type="submit" className="btn btn-outline-primary mx-3" onClick={handleCreate}>Сделать ставку</button>
-                      </div>
-                    </div>
-                  )}
+                <div><h4>{bid}</h4></div>
+                { user && (
+                <div className="row">
+                  <div className="mt-3">
+                    <button className="btn btn-outline-dark mr-2" onClick={handleUp} type="submit">Поднять ставку</button>
+                    <button type="submit" className="btn btn-outline-primary mx-3" onClick={handleCreate}>Сделать ставку</button>
+                  </div>
+                </div>
+                )}
               </div>
             </div>
           </div>

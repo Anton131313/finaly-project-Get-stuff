@@ -8,6 +8,7 @@ const {
 } = require('../../db/models');
 
 const getAuction = async (req, res) => {
+  console.log('ZASHLI');
   const { id } = req.params;
   try {
     const auctionProduct = await Product.findOne({
@@ -34,6 +35,7 @@ const getAuction = async (req, res) => {
     if (auctionProduct.length === 0) {
       return res.sendStatus(404);
     }
+    console.log('HKHKJHJK', auctionProduct);
     res.json(auctionProduct);
   } catch (error) {
     return res.sendStatus(500);
