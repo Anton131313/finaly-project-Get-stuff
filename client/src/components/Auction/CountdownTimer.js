@@ -6,11 +6,16 @@ import DateTimeDisplay from './DateTimeDisplay';
 import '../../App.css';
 import { getWinnerFromDB } from '../../redux/thunks/productsThunk';
 
-function ExpiredNotice() {
+function ExpiredNotice({ sellerId }) {
   const { id } = useParams();
   const dispatch = useDispatch();
+  // console.log('aucccccccc', sellerId);
+  const user = useSelector((store) => store.user);
+  // console.log(808080, user);
 
   const winner = useSelector((store) => store.winner);
+  // console.log(7777777777777, winner)
+  // console.log(winner.name, 'rrrr');
 
   useEffect(() => {
     dispatch(getWinnerFromDB(id));
@@ -18,11 +23,27 @@ function ExpiredNotice() {
 
   return (
     <div className="expired-notice">
-      <span>
-        {winner.name ? winner.name : (<div>Нет победителя</div>)}
-        !!!
-      </span>
-      <p>На вашу почту выслана информация о дальнейших действиях</p>
+      <h3>
+        победитель аукциона:
+        <br />
+        {
+         (+user.id === +sellerId) ? (
+           <>
+             <span className="mx-3">
+               <mark>{winner.name}</mark>
+               <br />
+               {' '}
+             </span>
+             <span className="mx-3">
+               телефон:
+               {' '}
+               <mark>{winner.phone}</mark>
+             </span>
+           </>
+
+         ) : winner && winner.name
+        }
+      </h3>
     </div>
   );
 }
@@ -50,11 +71,11 @@ function ShowCounter({
   );
 }
 
-function CountdownTimer({ targetDate }) {
+function CountdownTimer({ targetDate, sellerId }) {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+    return <ExpiredNotice sellerId={sellerId} />;
   }
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment

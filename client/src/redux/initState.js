@@ -5,6 +5,7 @@ const initState = () => ({
   search: [],
   comments: [],
   winner: {},
+  myAuctions: [],
 });
 
 const getInitState = () => {

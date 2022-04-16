@@ -41,7 +41,7 @@ function Comments() {
           </div>
           {user
             ? (
-              <div>
+              <div className="mb-5">
                 <div className="col-sm-9 text-secondary">
                   <input onChange={handleChange} value={input} type="textarea" name="text" className="form-control" placeholder="Введите комментарий" required />
                 </div>

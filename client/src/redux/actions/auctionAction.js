@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as config from '../../config/config';
-import { CREATE_COMMENTS, SET_AUCTION, SET_COMMENTS } from '../types/auctionTypes';
+import {
+  CREATE_COMMENTS, GET_MY_AUCTIONS, SET_AUCTION, SET_COMMENTS,
+} from '../types/auctionTypes';
 
 export const setAuction = (auction) => ({
   type: SET_AUCTION,
@@ -12,7 +14,6 @@ export const getAuctionData = (id) => async (dispatch) => {
   axios.get(`${config.getAuction(id.id)}`)
     .then((response) => {
       // navigate(`/bidding/${id.id}`);
-      console.log(response.data, 'uUUuuuuUUUUUUUUUUU');
       dispatch(setAuction(response.data));
     });
 };
@@ -50,3 +51,7 @@ export const createPriceData = (id, payload) => async (dispatch) => {
       dispatch(createPrice(response.data));
     });
 };
+export const getMyAuction = (myAuctions) => ({
+  type: GET_MY_AUCTIONS,
+  payload: myAuctions,
+});

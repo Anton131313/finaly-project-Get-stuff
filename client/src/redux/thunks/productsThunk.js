@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getMyAuction } from '../actions/auctionAction';
 import { addProduct, allProducts, deleteProduct } from '../actions/productsAction';
 import { getWinner } from '../actions/winnerAction';
 
@@ -27,4 +28,10 @@ export const getWinnerFromDB = (id) => (dispatch) => {
   // dispatch(getWinner({ name: 'Inga' }));
   axios.get(`${host}/winner/${id}`)
     .then((res) => dispatch(getWinner(res.data)));
+};
+
+export const getMyAuctionsfromDB = () => (dispatch) => {
+  axios.get(`${host}/bidding`)
+    // .then((response) => console.log('my auctions', response.data));
+    .then((res) => dispatch(getMyAuction(res.data)));
 };

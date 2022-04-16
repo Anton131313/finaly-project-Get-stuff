@@ -61,8 +61,8 @@ const deleteBidding = async (req, res) => {
 };
 
 const myBidding = async (req, res) => {
-  const user_id = 1;
-  // const user_id = req.session.user.id;
+  // const user_id = 1;
+  const user_id = req.session.user.id;
   try {
     const Useridding = await Product.findAll(
       {
@@ -99,6 +99,7 @@ const myBidding = async (req, res) => {
     }
 
     res.json(Useridding);
+    console.log(Useridding);
   } catch (error) {
     return res.sendStatus(500);
   }

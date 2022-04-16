@@ -16,18 +16,14 @@ function AuctionCard() {
   const [bid, setBids] = useState(auction['Bidding.price_step']);
   const [price, setPrice] = useState(JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']);
   const [priceChanged, setPriceChanged] = useState(false);
+  const [ended, setEnded] = useState(false);
 
   useEffect(() => {
     // setPrice(localStorage.getItem('Bidding.price'));
     dispatch(getAuctionData(id));
-    console.log(JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']);
+    // console.log(JSON.parse(localStorage.getItem('redux')).auction['Bidding.price']);
     // window.location.reload(false);
   }, []);
-
-  console.log('***********************', id);
-  // const inputState = '';
-  // if (+auction['Bidding.price'] === 0) { inputState = 'заберет бесплатно'; }
-  // else { inputState = auction['Bidding.price_step']; }
 
   const handleUp = () => {
     console.log(+bid, +auction['Bidding.price_step'], 2);
@@ -59,7 +55,9 @@ function AuctionCard() {
     }
   };
 
-  console.log('***********************', auction);
+  const sellerId = auction.user_id;
+
+  console.log('***********************', auction.user_id, auction);
 
   let cardData;
   let dateTimeAfterThreeDays;
@@ -75,6 +73,7 @@ function AuctionCard() {
         (Number(cardData[3]) - 3),
         cardData[4],
       );
+      console.log(dateTimeAfterThreeDays, 'DATEAFTER3DAUYS', Date.now())
     } catch (e) {
       console.log(e);
     }
@@ -174,7 +173,7 @@ function AuctionCard() {
           </div>
         </div>
       </div>
-      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+      <CountdownTimer targetDate={dateTimeAfterThreeDays} sellerId={sellerId} />
       <Comments />
     </div>
   );

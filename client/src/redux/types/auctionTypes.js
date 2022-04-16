@@ -4,3 +4,4 @@ export const SET_COMMENTS = 'SET_COMMENTS';
 export const CREATE_COMMENTS = 'CREATE_COMMENTS';
 
 export const CREATE_PRICE = 'CREATE_PRICE';
+export const GET_MY_AUCTIONS = 'GET_MY_AUCTIONS';
