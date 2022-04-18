@@ -4,11 +4,12 @@ const initState = () => ({
   auction: [],
   search: [],
   comments: [],
-  price: '',
+  winner: {},
 });
 
 const getInitState = () => {
   const stateFromLS = JSON.parse(window.localStorage.getItem('redux'));
+  console.log(11111111111111, stateFromLS);
   return stateFromLS || initState();
 };
 

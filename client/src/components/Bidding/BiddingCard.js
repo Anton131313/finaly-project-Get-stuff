@@ -19,8 +19,8 @@ function BiddingCard({
   // console.log(id);
   const handlerNavAuct = () => {
     // dispatch(getCommentsData(id));
-    dispatch(getAuctionData({ id }, navigate));
-    console.log('GGGGGGGG');
+    dispatch(getAuctionData({ id }));
+    navigate(`/bidding/${id}`);
   };
 
   return (
@@ -30,7 +30,7 @@ function BiddingCard({
           src={`${host}/img/${img}`}
           className="card-img-top"
           alt={title}
-          height="250px"
+          height="320px"
         />
         <div className="card-body">
           <h5 className="card-title mb-0">{title}</h5>
